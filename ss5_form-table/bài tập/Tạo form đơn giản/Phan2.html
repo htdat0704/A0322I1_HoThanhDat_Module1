@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Form - Phan2</title>
+    <style>
+        .lef{
+            text-align: left;
+            color: blue;
+        }
+    </style>
+</head>
+<body>
+    <form method="GET" action="https://www.google.com.vn/search">
+        <table>
+            <tr style="background-color:lightskyblue;color:blue;text-align:left" >
+                <th colspan="3">ĐĂNG KÝ HỌC VIÊN</th>
+            </tr>
+            <tr>
+                <td  size="80" class="lef">Họ và tên</td>
+                <td><input type="text" size= '15'></td>
+
+            </tr>
+            <tr>
+                <td class="lef">Email</td>
+                <td size = '100px'><input size= '10' type="text"></td>
+            </tr>
+            <tr>
+                <td class="lef">Giới tính</td>
+                <td >
+                    <input type="radio" value="Nam" >Nam
+                    <input type="radio" value="Nữ">Nữ
+                </td>
+            </tr>
+            <tr>
+                <td class="lef">Địa chỉ</td>
+                <td><textarea size= '15'></textarea></td>
+            </tr>
+            <tr>
+                <td class="lef">Lớp</td>
+                <td>
+                    <select >
+                        <option value="" disabled selected>--chọn lớp--</option>
+                        <option value="A01">A01</option>
+                        <option value="A01">A02</option>
+                        <option value="A01">A03</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td class="lef">Email</td>
+                <td><input type="text" size= '12'></input></td>
+            </tr>
+            <tr>
+                <td class="lef">Điện thoại</td>
+                <td><input type="text" size= '12'></input></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td colspan="2">
+                    <input type="submit" value="Đăng ký"/>
+                    <input type="reset" value="Nhập lại"/>
+                </td>
+            </tr>
+
+        </table>
+    </form>
+</body>
+</html>

@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Market Research Survey</title>
+    <style>
+        .midb{
+            text-align: center;
+        }
+        .midtable{
+            margin-left: auto;
+            margin-right:auto;
+        }
+        .ref{
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+<h2>Market Research Survey</h2>
+<p style="font-size:15px">Please take a few moments to complete this saisfaction survey</p>
+<hr>
+<form method="post" action="google.com">
+    <p class = "ref">What is your age range?</p>
+    <select name="age_range">
+        <option value="1">18-24</option>
+        <option value="2">24-50</option>
+        <option value="3">50-</option>
+    </select>
+    <p class = "ref">What is your yearly income range?</p>
+    <select name="age_range">
+        <option value="1">$0 - $25,000</option>
+        <option value="2">$25,000 - $50,000</option>
+        <option value="3">$50,000 -</option>
+    </select>
+    <p class = "ref">Gender?</p>
+    <input type="radio" name="gender" value="1">Male<br>
+    <input type="radio" name="gender" value="0">Fermale
+    <p class = "ref">Which of the following products have your purchased in the last 2 months.
+        Please check all that apply.</p>
+    <input type="checkbox" name="products" value="1">Product 1<br>
+    <input type="checkbox" name="products" value="2">Product 2<br>
+    <input type="checkbox" name="products" value="3">Product 3
+    <p class = "ref">How often would you use our new product?</p>
+    <input type="checkbox" name="products" value="1">Daily<br>
+    <input type="checkbox" name="products" value="2">Weekly<br>
+    <input type="checkbox" name="products" value="3">Monthly
+    <p class = "ref">What would you pay for the new product?</p>
+    <table >
+        <tr>
+            <th>$</th>
+            <th><input type="number" name="dollar" style="width: 60px;" > .</th>
+            <th><input type="number" name="cents" style="width: 30px;" ></th>
+        </tr>
+        <tr>
+            <td></td>
+            <td>Dollars</td>
+            <td>Cents</td>
+        </tr>
+    </table>
+    <p class = "ref">What features would you like to see in the new product.</p>
+    <textarea  name="features" style="width:100% ; height:120px"></textarea>
+    <p>Please rate your level of agreement with the following statements.</p>
+    <table border="1">
+        <tr>
+            <td></td>
+            <td style="width:150px" class="midb">Strongly Disagree</td>
+            <td style="width:150px" class="midb">Disagree</td>
+            <td style="width:150px" class="midb">Agree</td>
+            <td style="width:150px" class="midb">Strongly Agree</td>
+        </tr>
+        <tr>
+            <td class = "ref" >Our products are priced fairly.</td>
+            <td>
+                <table class="midtable" >
+                    <tr>
+                        <td class="midb"><input type="radio"></td>
+                    </tr>
+                    <tr>
+                        <td class="midb">1</td>
+                    </tr>
+                </table>
+            </td>
+            <td>
+                <table class="midtable">
+                    <tr>
+                        <td class="midb"> <input type="radio"></td>
+                    </tr>
+                    <tr>
+                        <td class="midb">2</td>
+                    </tr>
+                </table>
+            </td>
+            <td>
+                <table class="midtable">
+                    <tr>
+                        <td class="midb"><input type="radio"></td>
+                    </tr>
+                    <tr>
+                        <td class="midb">3</td>
+                    </tr>
+                </table>
+            </td>
+            <td>
+                <table class="midtable">
+                    <tr>
+                        <td class="midb"><input type="radio"></td>
+                    </tr>
+                    <tr>
+                        <td class="midb">4</td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+        <tr>
+            <td class = "ref" >Our products are high quality.</td>
+            <td>
+                <table class="midtable">
+                    <tr>
+                        <td class="midb"><input type="radio"></td>
+                    </tr>
+                    <tr>
+                        <td class="midb">1</td>
+                    </tr>
+                </table>
+            </td>
+            <td>
+                <table class="midtable">
+                    <tr>
+                        <td class="midb"><input type="radio"></td>
+                    </tr>
+                    <tr>
+                        <td class="midb">2</td>
+                    </tr>
+                </table>
+            </td>
+            <td>
+                <table class="midtable">
+                    <tr>
+                        <td class="midb"><input type="radio"></td>
+                    </tr>
+                    <tr>
+                        <td class="midb">3</td>
+                    </tr>
+                </table>
+            </td>
+            <td>
+                <table class="midtable">
+                    <tr>
+                        <td class="midb"><input type="radio"></td>
+                    </tr>
+                    <tr>
+                        <td class="midb">4</td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+        <tr>
+            <td style="width:600px" class = "ref">You would recommend our product to a friend or coworker.</td>
+            <td>
+                <table class="midtable">
+                    <tr>
+                        <td class="midb"><input type="radio"></td>
+                    </tr>
+                    <tr>
+                        <td class="midb">1</td>
+                    </tr>
+                </table >
+            </td>
+            <td>
+                <table class="midtable">
+                    <tr>
+                        <td class="midb"><input type="radio"></td>
+                    </tr>
+                    <tr>
+                        <td class="midb">2</td>
+                    </tr>
+                </table>
+            </td>
+            <td>
+                <table class="midtable">
+                    <tr>
+                        <td class="midb"><input type="radio"></td>
+                    </tr>
+                    <tr>
+                        <td class="midb">3</td>
+                    </tr>
+                </table>
+            </td>
+            <td>
+                <table class="midtable">
+                    <tr>
+                        <td class="midb"><input type="radio"></td>
+                    </tr>
+                    <tr>
+                        <td class="midb">4</td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+
+    </table>
+    <br>
+    <input class = "ref" type="Submit" value="Submit" name="Submit">
+
+
+</form>
+
+</body>
+</html>
