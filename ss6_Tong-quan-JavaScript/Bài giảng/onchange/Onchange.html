@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<select id="select" <!--onchange="changefuncion()-->">
+    <option value="1">1</option>
+    <option value="2">2</option>
+    <option value="3">3</option>
+    <option value="4">4</option>
+</select>
+</body>
+</html>
+<script>
+    /*function changefuncion() {
+        var Selectle = document.getElementById("select").value;
+        alert(Selectle);
+    }*/
+    var selectID = document.getElementById("select");
+    selectID.addEventListener("change", changefuncion);
+    function changefuncion() {
+        var selectne = document.getElementById("select").value;
+        alert(selectne);
+    }
+</script>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <label onclick="click1()" id="cl1">CLICK ME NOW</label>
+    <label onclick="click2()" id="cl2">NO CLICK ME PLS</label>
+</body>
+</html>
+<script>
+    // function click1() {
+    //     var click = document.getElementById("cl1").innerText;
+    //     alert(click);
+    // }
+    // function click2() {
+    //     var click = document.getElementById("cl2").innerText;
+    //     alert(click);
+    // }
+    var cli1 = document.getElementById("cl1");
+    var cli2 = document.getElementById("cl2");
+    cli1.addEventListener("click", click12);
+    cli2.addEventListener("click", click22);
+    function click12() {
+        var click = document.getElementById("cl1").innerText;
+        alert(click);
+    }
+    function click22() {
+        var click = document.getElementById("cl2").innerText;
+        alert(click);
+    }
+</script>
