@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>check year</title>
+</head>
+<body>
+<script>
+    let year = parseInt(prompt("Nhập năm= "));
+
+    let isdivsible4 = year % 4 == 0
+    if(isdivsible4) {
+        let isdivsible100 = year % 100 == 0;
+        if (isdivsible100) {
+            isLeapYear = true;
+        }
+    }else {
+        isLeapYear = true;
+    }
+
+    if (isLeapYear){
+        alert (year + " Đó là năm nhuận");
+    }else{
+        alert(year + " Không phải là năm nhuận");
+    }
+
+</script>
+
+</body>
+</html>
