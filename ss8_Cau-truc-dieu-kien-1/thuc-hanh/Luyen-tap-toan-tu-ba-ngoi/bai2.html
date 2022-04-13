@@ -9,20 +9,28 @@
     let person = prompt("Who are u ???","");
     let message;
 
-    switch (person){
-        case 'Employee':
-            message = 'Hello';
-            break;
-        case 'Director':
-            message = 'Greetings';
-            break;
-        case "":
-            message = 'No login';
-            break;
-        default:
-            message = '';
-            break;
-    }
+    // switch (person){
+    //     case 'Employee':
+    //         message = 'Hello';
+    //         break;
+    //     case 'Director':
+    //         message = 'Greetings';
+    //         break;
+    //     case "":
+    //         message = 'No login';
+    //         break;
+    //     default:
+    //         message = '';
+    //         break;
+    // }
+
+    let message = (login == 'Employee') ?
+        'Hello' :
+        (login == 'Director') ?
+            'Greetings' :
+            (login == '') ?
+                'No login' :
+                '';
 
 
     alert(message);
