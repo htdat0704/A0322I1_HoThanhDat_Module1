@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Câu lệnh switch-case</title>
+</head>
+<body>
+
+<input id="thange" type="number" name="thang" max="12" step="1"  >
+<input id="submit" type="submit" value="Tính số ngày">
+<p id="ngay"></p>
+
+<script>
+    let but = document.getElementById("submit");
+    but.addEventListener("click",clickFuncion);
+    function clickFuncion() {
+        let thangne = parseInt(document.getElementById("thange").value);
+        let messs;
+        switch(thangne){
+            case 1:
+            case 3:
+            case 5:
+            case 8:
+            case 7:
+            case 10:
+            case 12:
+                messs = "Tháng "+thangne+" có 31 ngày";
+                break;
+            case 6:
+            case 9:
+            case 11:
+            case 4:
+                messs = "Tháng "+thangne+" có 30 ngày";
+                break;  
+            case 2:
+                messs = "Tháng "+thangne+" có 28 ngày hoặc 29 ngày";
+                break;
+            default:
+                messs = "<span style='color:red'>Nhập tháng khoảng từ 1 - 12</span>";
+                break;
+        }
+        // alert(messs);
+        document.getElementById("ngay").innerHTML = messs;
+    }
+
+
+
+</script>
+</body>
+</html>
