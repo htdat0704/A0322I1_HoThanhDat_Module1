@@ -16,6 +16,7 @@
             border: 5px black solid;
         }
         p {
+            font-size: 25px;
             height:30px;
             width: 260px;
             border: 1px solid black;
@@ -32,65 +33,97 @@
         <td colspan="4" ><p id="output"></p></td>
     </tr>
     <tr>
-        <td><input type="submit" value="1" onclick="numberc('1')"></td>
-        <td><input type="submit" value="2" onclick="numberc('2')"></td>
-        <td><input type="submit" value="3" onclick="numberc('3')"></td>
+        <td><input type="submit" value="1" onclick="NumberFunction('1')"></td>
+        <td><input type="submit" value="2" onclick="NumberFunction('2')"></td>
+        <td><input type="submit" value="3" onclick="NumberFunction('3')"></td>
         <td><input type="submit" value="+" onclick="tinh('+')"></td>
     </tr>
     <tr>
-        <td><input type="submit" value="4" onclick="numberc('4')"></td>
-        <td><input type="submit" value="5" onclick="numberc('5')"></td>
-        <td><input type="submit" value="6" onclick="numberc('6')"></td>
+        <td><input type="submit" value="4" onclick="NumberFunction('4')"></td>
+        <td><input type="submit" value="5" onclick="NumberFunction('5')"></td>
+        <td><input type="submit" value="6" onclick="NumberFunction('6')"></td>
         <td><input type="submit" value="-" onclick="tinh('-')"></td>
     </tr>
     <tr>
-        <td><input type="submit" value="7" onclick="numberc('7')"></td>
-        <td><input type="submit" value="8" onclick="numberc('8')"></td>
-        <td><input type="submit" value="9" onclick="numberc('9')"></td>
+        <td><input type="submit" value="7" onclick="NumberFunction('7')"></td>
+        <td><input type="submit" value="8" onclick="NumberFunction('8')"></td>
+        <td><input type="submit" value="9" onclick="NumberFunction('9')"></td>
         <td><input type="submit" value="x" onclick="tinh('X')"></td>
     </tr>
     <tr>
-        <td><input type="submit" value="C" onclick="tinh('C')"></td>
-        <td><input type="submit" value="0" onclick="numberc('0')"></td>
-        <td><input type="submit" value="=" onclick="tinh('=')"></td>
+        <td><input type="submit" value="C" onclick="del()"></td>
+        <td><input type="submit" value="0" onclick="NumberFunction('0')"></td>
+        <td><input type="submit" value="=" onclick="FunctionOutput()"></td>
         <td><input type="submit" value="/" onclick="tinh('/')"></td>
     </tr>
 
 <script>
     let so = "";
-    let phep ="";
+    let phepTinhNhapVao ="";
+    let CheckNhapSoMoi = "";
     let so2 = "";
-    let result = "";
-    function numberc(x){
+    function NumberFunction(x){
+        if(CheckNhapSoMoi == "+" || CheckNhapSoMoi == "-" ||CheckNhapSoMoi == "X" ||CheckNhapSoMoi == "/" ){
+            so2 = so;
+            CheckNhapSoMoi = "";
+            so = ""
+        }
         so = so + x;
         document.getElementById("output").innerText = so;
     }
     function tinh(y){
-        if( so2 != ""){
-            if(phep == "+"){
-                so = parseFloat(so) + parseFloat(so2);
-            }
-            if(phep == "-"){
-                so = parseFloat(so2) - parseFloat(so);
-            }
-            if(phep == "X"){
-                so = parseFloat(so) * parseFloat(so2);
-            }
-            if(phep == "/"){
-                so = parseFloat(so2) / parseFloat(so);
-            }
-        }
-        enterl();
-        so2 = so;
+        CheckNhapSoMoi = y;
         document.getElementById("output").innerText = y;
-        phep = y;
-        result = parseFloat(result) + parseFloat(so);
+        if(phepTinhNhapVao == ""){
+            phepTinhNhapVao = y;
+        }
+        if(so2 != ""){
+            toan(phepTinhNhapVao);
+            CheckNhapSoMoi = "";
+            so ="";
+            phepTinhNhapVao = y;
+        }
+    }
+    function FunctionOutput(){
+        if(so2 == ""){
+            document.getElementById("output").innerText = "|";
+        }else{
+            toan(phepTinhNhapVao);
+            so =so2;
+            document.getElementById("output").innerText = so2;
+            so2 = "";
+            CheckNhapSoMoi = "";
+            phepTinhNhapVao = "";
+        }
+    }
+    function del() {
         so = "";
+        phepTinhNhapVao ="";
+        CheckNhapSoMoi = "";
+        so2 = "";
+        document.getElementById("output").innerText = "|";
     }
-    function enterl() {
-        document.getElementById("output").innerText = result;
-        result = "";
+    function toan(x){
+        switch (x) {
+            case "+":
+                so2 = parseFloat(so) + parseFloat(so2);
+                // alert(so2);
+                break;
+            case "-":
+                so2 = parseFloat(so2) - parseFloat(so);
+                // alert(so2);
+                break;
+            case "X":
+                so2 = parseFloat(so) * parseFloat(so2);
+                // alert(so2);
+                break;
+            case "/":
+                so2 = parseFloat(so2) / parseFloat(so);
+                // alert(so2);
+                break;
+        }
     }
+
 </script>
 
 </table>
