@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Máy tính đơn giản</title>
+    <style>
+        input {
+            color: blue;
+            height: 40px;
+            width: 40px;
+        }
+        tr td {
+            text-align: center;
+        }
+        table {
+            border: 5px black solid;
+        }
+        p {
+            height:30px;
+            width: 260px;
+            border: 1px solid black;
+            text-align:right;
+        }
+        span{
+            padding-top: 10px;
+        }
+    </style>
+</head>
+<body>
+<table width="20%" cellspacing="1px">
+    <tr >
+        <td colspan="4" ><p id="output"></p></td>
+    </tr>
+    <tr>
+        <td><input type="submit" value="1" onclick="numberc('1')"></td>
+        <td><input type="submit" value="2" onclick="numberc('2')"></td>
+        <td><input type="submit" value="3" onclick="numberc('3')"></td>
+        <td><input type="submit" value="+" onclick="tinh('+')"></td>
+    </tr>
+    <tr>
+        <td><input type="submit" value="4" onclick="numberc('4')"></td>
+        <td><input type="submit" value="5" onclick="numberc('5')"></td>
+        <td><input type="submit" value="6" onclick="numberc('6')"></td>
+        <td><input type="submit" value="-" onclick="tinh('-')"></td>
+    </tr>
+    <tr>
+        <td><input type="submit" value="7" onclick="numberc('7')"></td>
+        <td><input type="submit" value="8" onclick="numberc('8')"></td>
+        <td><input type="submit" value="9" onclick="numberc('9')"></td>
+        <td><input type="submit" value="x" onclick="tinh('X')"></td>
+    </tr>
+    <tr>
+        <td><input type="submit" value="C" onclick="tinh('C')"></td>
+        <td><input type="submit" value="0" onclick="numberc('0')"></td>
+        <td><input type="submit" value="=" onclick="tinh('=')"></td>
+        <td><input type="submit" value="/" onclick="tinh('/')"></td>
+    </tr>
+
+<script>
+    let so = "";
+    let phep ="";
+    let so2 = "";
+    let result = "";
+    function numberc(x){
+        so = so + x;
+        document.getElementById("output").innerText = so;
+    }
+    function tinh(y){
+        if( so2 != ""){
+            if(phep == "+"){
+                so = parseFloat(so) + parseFloat(so2);
+            }
+            if(phep == "-"){
+                so = parseFloat(so2) - parseFloat(so);
+            }
+            if(phep == "X"){
+                so = parseFloat(so) * parseFloat(so2);
+            }
+            if(phep == "/"){
+                so = parseFloat(so2) / parseFloat(so);
+            }
+        }
+        enterl();
+        so2 = so;
+        document.getElementById("output").innerText = y;
+        phep = y;
+        result = parseFloat(result) + parseFloat(so);
+        so = "";
+    }
+    function enterl() {
+        document.getElementById("output").innerText = result;
+        result = "";
+    }
+</script>
+
+</table>
+</body>
+</html>
