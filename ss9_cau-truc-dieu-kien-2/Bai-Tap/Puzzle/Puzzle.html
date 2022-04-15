@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Puzzle</title>
+    <style>
+        img {
+            border: 6px black double;
+            width: 600px;
+            height: 100px;
+        }
+    </style>
+</head>
+<body>
+<img onclick="chuyen('1')" id="img1"><br>
+<img src="img/2.jpg" onclick="chuyen('2')" id="img2"><br>
+<img src="img/3.jpg" onclick="chuyen('3')" id="img3"><br>
+<img src="img/4.jpg" onclick="chuyen('4')" id="img4"><br>
+<img src="img/5.jpg" onclick="chuyen('5')" id="img5">
+
+<script>
+    let getimg = "";
+    let srcI = "";
+    let catChuoi = "";
+    let viTriCatChuoi = "";
+    let nameImg = "";
+    let image = "";
+    function Init(){
+        let random = "";
+        let i = 1;
+        while (i < 6) {
+            random = Math.floor(Math.random() * 3);
+            switch (random) {
+                case 0:
+                    image = document.getElementById("img"+i+"");
+                    image.src = "img/"+i+".jpg";
+                    break;
+                case 1:
+                    image = document.getElementById("img"+i+"");
+                    i += 5;
+                    image.src = "img/"+i+".jpg";
+                    i -=5;
+                    break;
+                case 2:
+                    image = document.getElementById("img"+i+"");
+                    i += 10;
+                    image.src = "img/"+i+".jpg";
+                    i -=10;
+                    break;
+            }
+            i++;
+        }
+        matchFunction()
+    }
+    function matchFunction(){
+        image1 = document.getElementById("img1");
+        image2 = document.getElementById("img2");
+        image3 = document.getElementById("img3");
+        image4 = document.getElementById("img4");
+        image5 = document.getElementById("img5");
+        let im1 = getNameImgFunction(image1);
+        let im2 = getNameImgFunction(image2);
+        let im3 = getNameImgFunction(image3);
+        let im4 = getNameImgFunction(image4);
+        let im5 = getNameImgFunction(image5);
+        if((im1 == 1 && im2 == 2 && im3 == 3 && im4 == 4 && im5 == 5)||(
+                im1 == 6 && im2 == 7 && im3 == 8 && im4 == 9 && im5 == 10)||(
+                im1 == 11 && im2 == 12 && im3 == 13 && im4 == 14 && im5 == 15)) {
+            image1.style.border = "6px red double";
+            image2.style.border = "6px red double";
+            image3.style.border = "6px red double";
+            image4.style.border = "6px red double";
+            image5.style.border = "6px red double";
+        }
+    }
+    window.onload = Init;
+    function chuyen(x){
+        getimg = document.getElementById("img"+x+"");
+        nameImg = getNameImgFunction(getimg);
+        if(nameImg <6){
+            nameImg += 5;
+        }else if(nameImg >=6 && nameImg < 11){
+            nameImg += 5;
+        }else{
+            nameImg -= 10;
+        }
+        getimg.src = "img/"+nameImg+".jpg";
+        matchFunction()
+    }
+    function getNameImgFunction(img){
+        srcI = img.getAttribute("src");
+        catChuoi = srcI.slice(4);
+        viTriCatChuoi = catChuoi.search("j");
+        nameImg = parseInt(catChuoi.substr(0,viTriCatChuoi-1));
+        return nameImg;
+    }
+</script>
+</body>
+</html>
