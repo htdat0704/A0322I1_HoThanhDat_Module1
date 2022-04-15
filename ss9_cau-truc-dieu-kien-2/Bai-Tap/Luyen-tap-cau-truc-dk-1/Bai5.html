@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bài 5</title>
+</head>
+<body>
+<script>
+    let diemKiemTra = parseFloat(prompt("Nhập điểm kiểm tra "));
+    let diemThiGiuaKy = parseFloat(prompt("Nhập điểm giữa kỳ "));
+    let diemThiCuoiKy = parseFloat(prompt("Nhập điểm cuối kỳ "));
+
+    let diemTrungBinh = (diemKiemTra + diemThiGiuaKy*2 + diemThiCuoiKy*3)/6;
+
+    if(diemTrungBinh < 3.5){
+        alert("Học sinh kém");
+    }else if(diemTrungBinh >= 3.5 && diemTrungBinh <5){
+        alert("Học sinh Yếu");
+    }else if(diemTrungBinh >= 5 && diemTrungBinh <6.5){
+        alert("Học sinh Khá");
+    }else if(diemTrungBinh >= 6.5 && diemTrungBinh <8){
+        alert("Học sinh Tiên Tiến");
+    }else if(diemTrungBinh >= 8){
+        alert("Học sinh Giỏi");
+    }
+</script>
+</body>
+</html>

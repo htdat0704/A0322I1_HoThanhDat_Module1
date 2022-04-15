@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bài 7</title>
+</head>
+<body>
+<h2>Cước gọi điện thoại</h2>
+<table border="1px collapse">
+    <tr>
+        <th>
+            Phút gọi
+        </th>
+        <th>
+            Tiền mỗi phút
+        </th>
+    </tr>
+    <tr>
+        <td>
+            0-50 phút
+        </td>
+        <td>
+            600 đồng
+        </td>
+    </tr>
+    <tr>
+        <td>
+            50-150 phút
+        </td>
+        <td>
+            400 đồng
+        </td>
+    </tr>
+    <tr>
+        <td>
+            >150 phút
+        </td>
+        <td>
+            200 đồng
+        </td>
+    </tr>
+    <tr>
+        <td colspan="2">Phí thuê bao là 25.000</td>
+    </tr>
+</table><br>
+<input type="text" id="phut" placeholder="Nhập vào số phút">
+<input type="submit" id="submit" value="Nhập" onclick="submitFunction()"/>
+<p style="color:blue" id="output"></p>
+
+<script>
+    function submitFunction() {
+        let phutGoi = parseInt(document.getElementById("phut").value);
+        let total = 25000;
+        let phutConLai = "";
+
+        if( phutGoi < 50){
+            total += phutGoi*600;
+            document.getElementById("output").innerText="Số tiền phải trả là "+ total;
+        }else if(doanhthu >=50 && doanhthu<150){
+            phutConLai = phutGoi-50;
+            total += phutConLai*400 + 50*600;
+            document.getElementById("output").innerText="Số tiền phải trả là "+ total;
+        }else if(doanhthu >=150){
+            phutConLai = phutGoi-150;
+            total += phutConLai*200 + 50*600 + 100*400;
+            document.getElementById("output").innerText="Số tiền phải trả là "+ total;
+        }
+    }
+</script>
+</body>
+</html>

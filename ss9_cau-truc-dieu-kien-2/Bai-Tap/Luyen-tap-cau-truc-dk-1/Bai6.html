@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bài 6</title>
+</head>
+<body>
+<table border="1px solid black">
+    <tr>
+        <th>
+            Doanh thu
+        </th>
+        <th>
+            Hoa hồng
+        </th>
+    </tr>
+    <tr>
+        <td>
+            0-200
+        </td>
+        <td>
+            3%
+        </td>
+    </tr>
+    <tr>
+        <td>
+            200-500
+        </td>
+        <td>
+            5%
+        </td>
+    </tr>
+    <tr>
+        <td>
+            >500
+        </td>
+        <td>
+            10%
+        </td>
+    </tr>
+</table><br>
+<input type="text" id="doanhthu" placeholder="Nhập vào doanh thu">
+<input type="submit" id="submit" value="Nhập" onclick="submitFunction()"/>
+<p style="color:blue" id="output"></p>
+
+<script>
+    let doanhthu = parseInt(document.getElementById("doanhthu").value);
+
+
+    function submitFunction() {
+        let doanhthu = parseInt(document.getElementById("doanhthu").value);
+        if( doanhthu < 200){
+            document.getElementById("output").innerText="Doanh thu nhận được là "+ doanhthu*3/100;
+        }else if(doanhthu >=200 && doanhthu<500){
+            document.getElementById("output").innerText="Doanh thu nhận được là "+ doanhthu*5/100;
+        }else if(doanhthu >=500){
+            document.getElementById("output").innerText="Doanh thu nhận được là "+ doanhthu*10/100;
+        }
+    }
+</script>
+</body>
+</html>
