@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bài 11</title>
+</head>
+<body>
+<table border="1px solid black">
+    <tr>
+        <th>
+            Bậc
+        </th>
+        <th>
+            Thu nhập tính thuế /tháng
+        </th>
+        <th>
+            Thuế suất
+        </th>
+    </tr>
+    <tr>
+        <td>
+            1
+        </td>
+        <td>
+            Đến 5 triệu đồng (trđ)
+        </td>
+        <td>
+            5%
+        </td>
+    </tr>
+    <tr>
+        <td>
+            2
+        </td>
+        <td>
+            Trên 5 trđ đến 10 trđ
+        </td>
+        <td>
+            10%
+        </td>
+    </tr>
+    <tr>
+        <td>
+            3
+        </td>
+        <td>
+            Trên 10 trđ đến 18 trđ
+        </td>
+        <td>
+            15%
+        </td>
+    </tr>
+    <tr>
+        <td>
+            4
+        </td>
+        <td>
+            Trên 18 trđ đến 32 trđ
+        </td>
+        <td>
+            20%
+        </td>
+    </tr>
+    <tr>
+        <td>
+            5
+        </td>
+        <td>
+            Trên 32 trđ đến 52 trđ
+        </td>
+        <td>
+            25%
+        </td>
+    </tr>
+    <tr>
+        <td>
+            6
+        </td>
+        <td>
+            Trên 52 trđ đến 80 trđ
+        </td>
+        <td>
+            30%
+        </td>
+    </tr>
+    <tr>
+        <td>
+            7
+        </td>
+        <td>
+            Trên 80 trđ
+        </td>
+        <td>
+            35%
+        </td>
+    </tr>
+</table><br>
+<input type="text" id="thue" placeholder="Nhập vào thu nhập (trđ)">
+<input type="submit" id="submit" value="Nhập" onclick="submitFunction()"/>
+<p style="color:blue" id="output"></p>
+
+
+<script>
+    function submitFunction() {
+        let soTien = parseInt(document.getElementById("thue").value);
+        let total = 0;
+
+        if( soTien < 5){
+            total += soTien*5/100;
+            document.getElementById("output").innerText="Số tiền phải trả là "+ total +" (trđ)";
+        }else if(soTien >=5 && soTien<10){
+            total += soTien*10/100;
+            document.getElementById("output").innerText="Số tiền phải trả là "+ total+" (trđ)";
+        }else if(soTien >=10 && soTien<18){
+            total += soTien*15/100;
+            document.getElementById("output").innerText="Số tiền phải trả là "+ total+" (trđ)";
+        }else if(soTien >=18 && soTien<32){
+            total += soTien*20/100;
+            document.getElementById("output").innerText="Số tiền phải trả là "+ total+" (trđ)";
+        }else if(soTien >=32 && soTien<52){
+            total += soTien*25/100;
+            document.getElementById("output").innerText="Số tiền phải trả là "+ total+" (trđ)";
+        }else if(soTien >=52 && soTien<80) {
+            total += soTien * 30 / 100;
+            document.getElementById("output").innerText = "Số tiền phải trả là " + total + " (trđ)";
+        }else if(soTien >=80){
+            total += soTien * 35 / 100;
+            document.getElementById("output").innerText = "Số tiền phải trả là " + total + " (trđ)";
+        }
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bài 12</title>
+</head>
+<body>
+<script>
+    let soTienNo= parseInt(prompt("Số tiền nợ "));
+    let soThangChoVay = parseInt(prompt("Số Tháng cho vay "));
+    let laiSuatHangThang = parseInt(prompt("Lãi suất hàng tháng cho vay "));
+
+    let laiSuatTraHangThang = soTienNo/soThangChoVay + soTienNo*laiSuatHangThang/100/12
+
+    alert("Lãi suất hàng tháng là "+laiSuatTraHangThang);
+</script>
+</body>
+</html>

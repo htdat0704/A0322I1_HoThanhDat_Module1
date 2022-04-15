@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bài 10</title>
+</head>
+<body>
+    <table border="1px solid black">
+        <tr>
+            <th>
+                STT
+            </th>
+            <th>
+                Sản lượng (kWh)
+            </th>
+            <th>
+                Giá điện (đồng/kWh)
+            </th>
+        </tr>
+        <tr>
+            <td>
+                Bậc thang 1
+            </td>
+            <td>
+                0 - 50
+            </td>
+            <td>
+                1678
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Bậc thang 2
+            </td>
+            <td>
+                51 - 100
+            </td>
+            <td>
+                1734
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Bậc thang 3
+            </td>
+            <td>
+                101 - 200
+            </td>
+            <td>
+                2014
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Bậc thang 4
+            </td>
+            <td>
+                201 - 300
+            </td>
+            <td>
+                2536
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Bậc thang 5
+            </td>
+            <td>
+                301 - 400
+            </td>
+            <td>
+                2834
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Bậc thang 6
+            </td>
+            <td>
+                Trên 400
+            </td>
+            <td>
+                2927
+            </td>
+        </tr>
+    </table><br>
+    <input type="text" id="kwh" placeholder="Nhập vào kWh">
+    <input type="submit" id="submit" value="Nhập" onclick="submitFunction()"/>
+    <p style="color:blue" id="output"></p>
+
+<script>
+    function submitFunction() {
+        let soDien = parseInt(document.getElementById("kwh").value);
+        let soDienConLai = 0;
+        let total = 0;
+
+        if( soDien < 51){
+            total += soDien*1678;
+            document.getElementById("output").innerText="Số tiền phải trả là "+ total;
+        }else if(soDien >=51 && soDien<101){
+            soDienConLai = soDien-50;
+            total += soDienConLai*1734 + 50*1678;
+            document.getElementById("output").innerText="Số tiền phải trả là "+ total;
+        }else if(soDien >=101 && soDien<201){
+            soDienConLai = soDien-100;
+            total += soDienConLai*2014 + 50*1734 + 50*1678;
+            document.getElementById("output").innerText="Số tiền phải trả là "+ total;
+        }else if(soDien >=201 && soDien<301){
+            soDienConLai = soDien-200;
+            total += soDienConLai*2536 + 50*1734 + 50*1678 + 100*2014;
+            document.getElementById("output").innerText="Số tiền phải trả là "+ total;
+        }else if(soDien >=301 && soDien<401){
+            soDienConLai = soDien-300;
+            total += soDienConLai*2834 + 50*1734 + 50*1678 + 100*2014 + 100*2536;
+            document.getElementById("output").innerText="Số tiền phải trả là "+ total;
+        }else if(soDien >=401){
+            soDienConLai = soDien-400;
+            total += soDienConLai*2927 + 50*1734 + 50*1678 + 100*2014 + 100*2536 + 100*2834;
+            document.getElementById("output").innerText="Số tiền phải trả là "+ total;
+        }
+    }
+</script>
+</body>
+</html>

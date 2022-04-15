@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bài 7</title>
+</head>
+<body>
+<script>
+    let a = parseInt(prompt("nhập  a "));
+    let b = parseInt(prompt("nhập  b "));
+    let c = parseInt(prompt("nhập  c "));
+    let x1 = "";
+    let x2 ="";
+
+    let delta = b*b - 4*a*c;
+
+    if(delta <0){
+        alert("PT vô nghiệm");
+    }else if(delta > 0){
+        x1 = (-b + Math.sqrt(delta))/(2*a);
+        x2 = (-b - Math.sqrt(delta))/(2*a);
+        alert("PT có 2 nghiệm là "+x1+" và "+x2);
+    }else{
+        x1 = -b/(2*a);
+        alert("PT có nghiệm kép là "+x);
+    }
+
+</script>
+</body>
+</html>
