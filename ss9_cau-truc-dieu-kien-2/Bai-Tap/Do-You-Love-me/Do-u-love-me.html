@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ứng dụng vui DoYouLoveMe</title>
+</head>
+<body>
+<h1> DO YOU LOVE ME ?</h1>
+<input type="submit" value="YES" onclick="yesFunction()"/>
+<input type="submit" id='no' value="NO" onmouseover="noFunction()"/>
+<script>
+    let buttonNo = document.getElementById("no");
+
+    function yesFunction(){
+        alert("<3 . yêu quá chời");
+    }
+    function noFunction(){
+        let width = Math.floor(Math.random() * window.innerWidth);
+        let height = Math.floor(Math.random() * window.innerHeight);
+
+        buttonNo.style.left = width + "px";
+        buttonNo.style.top = height + "px";
+    }
+    function Init(){
+        buttonNo.style.position = 'relative';
+        buttonNo.style.left = '0px';
+        buttonNo.style.top = '0px';
+    }
+    window.onload = Init;
+</script>
+</body>
+</html>
