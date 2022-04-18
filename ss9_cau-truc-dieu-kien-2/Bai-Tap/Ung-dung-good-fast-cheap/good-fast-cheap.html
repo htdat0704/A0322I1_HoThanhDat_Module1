@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>G-F-C</title>
+</head>
+<body>
+
+<input type="checkbox" id="good" onchange="changeFunction('good')" /> Good <br>
+<input type="checkbox" id="cheap" onchange="changeFunction('cheap')" /> Cheap <br>
+<input type="checkbox" id="fast" onchange="changeFunction('fast')"/> Fast <br>
+
+<script>
+    // Check
+    let good = document.getElementById("good");
+    let fast = document.getElementById("fast");
+    let cheap = document.getElementById("cheap");
+
+
+    function changeFunction(varible){
+        if(good.checked && fast.checked && cheap.checked){
+            if(varible == 'good'){
+                fast.checked  = false;
+            }
+            if(varible == 'fast'){
+                cheap.checked  = false;
+            }
+            if(varible == 'cheap'){
+                good.checked = false;
+            }
+        }
+    }
+
+
+</script>
+</body>
+</html>

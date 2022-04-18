@@ -19,7 +19,7 @@
 <img src="img/5.jpg" onclick="chuyen('5')" id="img5">
 
 <script>
-    let getimg = "";
+    let getImg = "";
     let srcI = "";
     let catChuoi = "";
     let viTriCatChuoi = "";
@@ -75,8 +75,8 @@
     }
     window.onload = Init;
     function chuyen(x){
-        getimg = document.getElementById("img"+x+"");
-        nameImg = getNameImgFunction(getimg);
+        getImg = document.getElementById("img"+x+"");
+        nameImg = getNameImgFunction(getImg);
         if(nameImg <6){
             nameImg += 5;
         }else if(nameImg >=6 && nameImg < 11){
@@ -84,7 +84,7 @@
         }else{
             nameImg -= 10;
         }
-        getimg.src = "img/"+nameImg+".jpg";
+        getImg.src = "img/"+nameImg+".jpg";
         matchFunction()
     }
     function getNameImgFunction(img){
