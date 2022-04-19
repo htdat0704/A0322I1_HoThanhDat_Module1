@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bài 3</title>
+</head>
+<body>
+<script>
+    let inputN = parseInt(prompt('Nhập vào N '));
+    let soMot = 1;
+    let soHai = 1;
+    let soBa;
+    switch (inputN){
+        case 1:
+            document.write(soMot+ " ");
+            break;
+        case 2:
+            document.write(soMot+ " ");
+            document.write(soHai+ " ");
+            break;
+        default:
+            document.write(soMot+ " ");
+            document.write(soHai+ " ");
+            while (inputN > 2) {
+                soBa = soMot + soHai;
+                document.write(soBa + " ");
+                soMot = soHai;
+                soHai = soBa;
+                inputN --;
+            }
+    }
+
+</script>
+</body>
+</html>
