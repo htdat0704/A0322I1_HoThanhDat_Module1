@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bài 5</title>
+</head>
+<body>
+<script>
+    let soHai = 1;
+    let soMot = 1;
+    let soBa = 0;
+
+    let sum  = soHai + soMot;
+    let dem = 2;
+
+    while(true){
+        soBa = soMot + soHai;
+        soMot = soHai;
+        soHai = soBa;
+
+        sum+=soBa;
+        dem++;
+
+        if(dem == 20){
+            alert('Tổng 20 số đầu tiên của dãy Fibonacci là : '+ sum);
+            break;
+        }
+    }
+</script>
+</body>
+</html>

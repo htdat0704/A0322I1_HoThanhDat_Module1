@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bài 8</title>
+</head>
+<body>
+<h1 style="text-align:center"> Game Đoán Số</h1>
+<div style="text-align:center">
+    <input type="submit" value="Chơi" id="play">
+    <input type="submit" value="Chơi lại" id="resetPlay">
+</div>
+
+<script>
+    let soDau = 0;
+    let soCuoi = 1;
+    let random = 0;
+    let dem;
+    let soDoan = 0;
+
+
+    let btnPlayAgain = document.getElementById('play');
+    let btnPlay = document.getElementById('play');
+
+    btnPlayAgain.addEventListener('click',playFunction);
+    btnPlay.addEventListener('click', playFunction);
+    function playFunction (){
+        dem = 0;
+        alert('Nhập Khoảng đoán số');
+        soDau = parseInt(prompt("nhập vào số đầu "));
+        soCuoi = parseInt(prompt("nhập vào số cuối "));
+
+        while(soCuoi < soDau){
+            soCuoi = parseInt(prompt('Nhập lại số cuối (số cuối > '+soDau) +')');
+        }
+
+        random = parseInt(Math.random() * (soCuoi - soDau) + soDau);
+
+        soDoan = parseInt(prompt('Nhập số đoán '));
+        if(soDoan != random){
+            while(dem <2){
+
+                if(soDoan < random){
+                    alert(soDoan+ ' nhỏ hơn so với số ngẫu nhiên');
+                    soDoan = parseInt(prompt('Nhập số đoán lại '));
+                }else{
+                    alert(soDoan+ ' lớn hơn so với số ngẫu nhiên');
+                    soDoan = parseInt(prompt('Nhập số đoán lại '));
+                }
+                if(soDoan == random){
+                    break;
+                }
+
+                dem++;
+            }
+        }
+
+        if(dem == 2 && soDoan != random){
+            alert('Nhập sai quá 3 lần rồi nhập lại đi bạn êy');
+        }else{
+            alert('Chúc mừng số đó là số '+random);
+        }
+
+    }
+
+
+
+
+
+
+
+
+
+
+</script>
+
+</body>
+</html>

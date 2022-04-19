@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bài 4</title>
+</head>
+<body>
+<script>
+    let soHai = 1;
+    let soMot = 1;
+    let soBa = 0;
+
+    while(true){
+        soBa = soMot + soHai;
+        document.write(soBa + " ");
+        soMot = soHai;
+        soHai = soBa;
+        if(soBa % 5 == 0){
+            alert('Số chia hết cho 5 là' + soBa);
+            break;
+        }
+    }
+
+
+
+
+</script>
+
+</body>
+</html>
