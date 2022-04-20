@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bài 5</title>
+</head>
+<body>
+<script>
+
+    let moneyInput = parseFloat(prompt("Nhập số tiền ban đầu:  "));
+    let percent = parseFloat(prompt('Nhập lãi xuất ngân hàng: '));
+    let month = parseFloat(prompt('Số tháng cho vay : '));
+
+    percent = percent/100;
+    
+    while(month > 0){
+        moneyInput += moneyInput*percent;
+        month --;
+    }
+
+    alert(' Số tiền nhận được là '+moneyInput);
+</script>
+</body>
+</html>

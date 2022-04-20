@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bài 2</title>
+</head>
+<body>
+<script>
+
+    let inputNum = parseInt(prompt('Nhập vào số nguyên dương: '));
+    let tich = 1;
+    let giaiThua = inputNum;
+
+    while(true){
+
+        if(inputNum <= 0){
+            break;
+        }
+
+        tich *= inputNum;
+        inputNum -- ;
+    }
+
+    alert(' giai thừa của '+giaiThua+' là '+tich)
+
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bài 4</title>
+</head>
+<body>
+
+<script>
+    let cot,hang;
+
+    for( cot = 1; cot <= 7; cot++){
+        if(cot == 1 || cot == 7){
+            for( hang = 1; hang <= 21; hang ++){
+                document.write("*");
+            }
+        }else {
+            document.write("*");
+            for (hang = 1; hang <= 19; hang++) {
+                document.write("&nbsp&nbsp");
+            }
+            document.write("*");
+        }
+        document.write("<br>");
+    }
+</script>
+
+</body>
+</html>
