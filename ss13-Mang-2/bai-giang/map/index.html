@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+
+    let student = [
+        {
+            id:1,
+            name:2,
+            address:3
+        },
+        {
+            id:2,
+            name:5,
+            address: 6
+        },
+        {
+            id:3,
+            name:1,
+            address: 2
+        }
+    ]
+
+    student.map(function(value){
+        if(value.id == 1){
+            value.name = 'mot';
+        }
+        console.log(value);
+    })
+
+</script>
+</body>
+</html>
