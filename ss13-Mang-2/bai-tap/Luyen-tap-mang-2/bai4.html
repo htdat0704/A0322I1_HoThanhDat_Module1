@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bài 4</title>
+</head>
+<body>
+<script>
+
+    let stringFind = '162csceeaaaacc';
+    let arrayString = stringFind.split('');
+    alert(arrayString);
+    let count = 0;
+    let count2 = 0;
+
+    for(let i in arrayString){
+        if(typeof arrayString[i] == 'string'){
+            count += 1;
+        }
+    }
+    alert(count);
+
+
+</script>
+</body>
+</html>
