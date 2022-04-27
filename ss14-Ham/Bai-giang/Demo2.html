@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Demo</title>
+</head>
+<body>
+Square of <input type="number" id="input" oninput="calculate()"/> is: <span id="output"></span>
+
+<script>
+
+    function square(value){
+        return value*value;
+    }
+
+    function calculate(){
+        let inputNum = parseInt(document.getElementById('input').value);
+        let squareInput = square(inputNum);
+        document.getElementById('output').innerText = squareInput;
+    }
+
+
+
+</script>
+</body>
+</html>
