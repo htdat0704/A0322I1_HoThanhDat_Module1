@@ -7,18 +7,17 @@
 <body>
 <script>
 
-    let stringFind = '162csceeaaaacc';
-    let arrayString = stringFind.split('');
+    let stringFind = '162csceeaaaacc abc dcd cdc';
+    let arrayString = stringFind.split(' ');
     alert(arrayString);
-    let count = 0;
-    let count2 = 0;
-
-    for(let i in arrayString){
-        if(typeof arrayString[i] == 'string'){
-            count += 1;
-        }
-    }
-    alert(count);
+    // let count = 0;
+    //
+    // for(let i in arrayString){
+    //     if(typeof arrayString[i] == 'string'){
+    //         count += 1;
+    //     }
+    // }
+    alert(arrayString.length);
 
 
 </script>
