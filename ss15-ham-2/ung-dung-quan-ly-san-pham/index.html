@@ -6,10 +6,11 @@
 </head>
 <body>
 <h2>Ứng dụng quản lý sản phẩm</h2>
-<table id="output" border = '1px solid black' style="font-size:20px"></table><br>
-<input type="submit" value="Show Table" onclick="showTable()" /><br><br>
 Add product: <input type="text"  id="product"/>
 <input type="submit" value="Add" onclick="addProduct()" /><br>
+<table id="output" border = '1px solid black' style="font-size:20px"></table><br>
+<input type="submit" value="Show Table" onclick="showTable()" /><br><br>
+
 
 <script>
 
@@ -22,10 +23,15 @@ Add product: <input type="text"  id="product"/>
         if(input != ""){
             arrayProduct.push(input);
         }
+        showTable();
     }
 
     function showTable() {
         dataHTML ="";
+        dataHTML += '<tr>';
+        dataHTML += '<th>ProductName</th>';
+        dataHTML += '<th colspan="2">'+arrayProduct.length+' products</th>';
+        dataHTML += '</tr>';
         dataHTML += '<tr>';
         dataHTML += '<th>STT</th>';
         dataHTML += '<th>Product</th>';
