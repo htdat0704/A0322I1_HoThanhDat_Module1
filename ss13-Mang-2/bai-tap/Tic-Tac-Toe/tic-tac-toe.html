@@ -108,7 +108,7 @@
 
     }
     function resetValue() {
-        dataHTML = beginHTML;
+
         for(let row = 0; row < boardArray.length; row++){
             for(let col = 0; col < boardArray[row].length; col++){
                 if(boardArray[row][col] == 'x' || boardArray[row][col] == 'y' ){
@@ -116,8 +116,9 @@
                 }
             }
         }
-        caro.innerHTML =  dataHTML;
 
+        dataHTML = beginHTML;
+        caro.innerHTML =  dataHTML;
     }
 
 
