@@ -15,9 +15,12 @@
     let dataHTML = '';
     let beginHTML = '';
 
+
     for( let i = 0; i < 5;i ++){
         boardArray[i] = new Array('.','.','.','.','.');
     }
+
+
 
     for(let i=0; i<5; i++){
         dataHTML += "<br/>";
@@ -105,7 +108,16 @@
 
     }
     function resetValue() {
-        caro.innerHTML =  beginHTML;
+        dataHTML = beginHTML;
+        for(let row = 0; row < boardArray.length; row++){
+            for(let col = 0; col < boardArray[row].length; col++){
+                if(boardArray[row][col] == 'x' || boardArray[row][col] == 'y' ){
+                    boardArray[row][col] = '.';
+                }
+            }
+        }
+        caro.innerHTML =  dataHTML;
+
     }
 
 
