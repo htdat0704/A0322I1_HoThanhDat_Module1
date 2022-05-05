@@ -6,29 +6,29 @@
 </head>
 <body>
 <script>
-    let array = [];
-    let arrayString = [];
 
     function convert(string){
-        array =  string.split('');
-        return array;
+        let arrayString =  string.split('');
+        return arrayString;
     }
 
-    function isPalindrome(string) {
-        arrayString = convert(string);
-        if(arrayString[0] == arrayString[arrayString.length - 1]){
-            arrayString.pop();
-            arrayString.shift();
-            if(arrayString[arrayString.length] > 2){
-                arrayString.pop();
-                arrayString.shift();
-                return isPalindrome(arrayString.toString());
+    function isPalindrome(array) {
+        if(array.length > 1){
+            if(array[0] == array[array.length - 1]){
+                if(array.length != 2){
+                    array.pop();
+                    array.shift();
+                    return isPalindrome(array);
+                }else {
+                    return true;
+                }
             }else{
-                return true;
+                return false;
             }
         }else{
-            return false;
+            return true;
         }
+
     }
 
     let inputS = prompt('Nhập chuỗi');
@@ -43,7 +43,7 @@
             break;
         }
     }
-    if(isPalindrome(inputS)){
+    if(isPalindrome(convert(inputS))){
         alert(inputS +' là chuỗi đối xứng');
     }else{
         alert(inputS +' là chuỗi không đối xứng');
