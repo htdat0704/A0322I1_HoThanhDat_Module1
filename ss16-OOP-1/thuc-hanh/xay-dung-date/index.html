@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Xây dựng date</title>
+</head>
+<body>
+<script>
+
+    function Date(day,month,year){
+        this.day = day;
+        this.month = month;
+        this.year = year;
+        this.getDay = () =>{
+            return "day = "+this.day;
+        };
+        this.getMonth = () =>{
+            return "month = "+this.month;
+        };
+        this.getYear = function(){
+            return "year = "+this.year;
+        }
+        this.setDay = (day) =>{
+            this.day = day;
+        }
+        this.setMonth = (month) =>{
+            this.month = month;
+        }
+        this.setYear = (year) =>{
+            this.year = year;
+        }
+    }
+
+    let newDay = new Date(3,4,2022);
+    newDay.setDay(5);
+    alert(newDay.getDay());
+
+
+
+
+
+</script>
+</body>
+</html>
