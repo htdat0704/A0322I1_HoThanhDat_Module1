@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>hinh-tron</title>
+</head>
+<body>
+
+<script>
+    let Circle = function(radius){
+        this.radius = radius;
+        this.getRadius = () => {
+            return "r = "+this.radius;
+        }
+        this.getArea = () => {
+            return Math.PI*this.radius*this.radius;
+        }
+    }
+
+    let circle1 = new Circle(5);
+    alert(circle1.getRadius());
+    alert(circle1.getArea());
+
+
+</script>
+
+
+</body>
+</html>
