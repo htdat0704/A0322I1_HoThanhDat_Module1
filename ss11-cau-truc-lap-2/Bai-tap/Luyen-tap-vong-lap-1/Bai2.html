@@ -7,9 +7,14 @@
 <body>
 <script>
     let nhietDo = parseInt(prompt('nhập nhiệt độ vào'));
-        while(nhietDo < 20 || nhietDo > 100){
+    do{
+        if(nhietDo < 20){
             nhietDo = parseInt(prompt('Nhiệt độ dưới 20 hãy tăng thêm '));
         }
+        if(nhietDo > 100){
+            nhietDo = parseInt(prompt('Nhiệt độ trên 100 hãy giam xuong '));
+        }
+    }while(nhietDo < 20 || nhietDo > 100);
     alert('Nhiệt dộ phù hợp');
 </script>
 </body>

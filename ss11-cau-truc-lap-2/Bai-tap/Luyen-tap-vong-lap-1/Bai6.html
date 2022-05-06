@@ -6,17 +6,14 @@
 </head>
 <body>
 <script>
-    let num = 1;
     let sum = 0;
     let dem = 1;
+    let num = 7;
 
     while(true){
-        num += 1;
-        if(num % 7 == 0){
-            sum += num;
-            dem += 1;
-        }
-
+        sum += num;
+        num += 7;
+        dem ++;
         if(dem == 30){
             break;
         }
