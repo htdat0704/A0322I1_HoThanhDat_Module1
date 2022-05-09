@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bài 2</title>
+</head>
+<body>
+<script>
+
+    let inputKyTu = prompt('Nhập kí tự');
+    let output = '';
+    switch (inputKyTu){
+        case 'o':
+        case 'u':
+        case 'i':
+        case 'a':
+        case 'e':
+        case 'O':
+        case 'U':
+        case 'I':
+        case 'A':
+        case 'E':
+            output = inputKyTu + ' là từ nguyên âm ';
+            break;
+        default:
+            output = inputKyTu + ' là từ phụ âm ';
+    }
+
+    alert(output);
+
+</script>
+</body>
+</html>

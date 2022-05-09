@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bài 1</title>
+</head>
+<body>
+<script>
+
+    let arrayInt = [1,2,3,4,5,6];
+    let sum = 0;
+    function prefixSums(arr){
+        let arrayOut = [];
+        for(let index in arr){
+            sum += arr[index];
+            arrayOut.push(sum);
+        }
+        return arrayOut;
+    }
+    alert(prefixSums(arrayInt));
+
+
+</script>
+</body>
+</html>

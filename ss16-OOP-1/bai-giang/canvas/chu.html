@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Đường thẳng</title>
+    <title>Chữ</title>
 </head>
 <body>
 <canvas id="myCanvas" width="200" height="100" style='border:1px solid black'></canvas>
@@ -10,9 +10,13 @@
 <script>
     var c = document.getElementById("myCanvas");
     var ctx = c.getContext("2d");
-    ctx.moveTo(0,0);
-    ctx.lineTo(200,100);
-    ctx.stroke();
+    ctx.font = "30px Arial";
+    ctx.strokeText("Hello World",10,50);
+
+    // var c = document.getElementById("myCanvas");
+    // var ctx = c.getContext("2d");
+    // ctx.font = "30px Arial";
+    // ctx.fillText("Hello World",10,50);
 </script>
 </body>
 </html>

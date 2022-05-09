@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bài 1</title>
+</head>
+<body>
+<script>
+    let inputLuong = parseInt(prompt('Nhập lương nhân viên'));
+    let thue;
+    if(inputLuong < 7000000){
+        thue = inputLuong*5/100;
+    }else if(inputLuong < 15000000){
+        thue = inputLuong*10/100;
+    }else{
+        thue = inputLuong*15/100;
+    }
+    alert('Thuế nhân viên đó là '+thue);
+</script>
+</body>
+</html>

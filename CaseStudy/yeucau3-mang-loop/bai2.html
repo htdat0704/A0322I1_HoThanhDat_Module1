@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bài 2</title>
+</head>
+<body>
+<script>
+    let arrayA=[7,2,5,3,5,3,2]
+    let arrayB=[7,2,5,4,6,3,5,3,3]
+
+    function missingValue(arrA, arrB){
+        let arrayOutput = [];
+        for(let index in arrA){
+            if(arrB.indexOf(arrA[index]) > -1){
+                arrB.splice(arrB.indexOf(arrA[index]), 1);
+            }else{
+                arrayOutput.push(arrA[index]);
+            }
+        }
+        return arrayOutput.concat(arrB);
+    }
+
+    alert(missingValue(arrayA,arrayB));
+
+</script>
+</body>
+</html>

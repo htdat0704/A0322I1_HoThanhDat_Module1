@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bài 4</title>
+</head>
+<body>
+
+<script>
+
+    let inputNum = prompt('Nhập số từ bàn phím ');
+    let arr = inputNum.split('');
+    for(let index in arr){
+        switch(arr[index]){
+            case '0':
+                arr[index] = 'Không';
+                break;
+            case '1':
+                arr[index] = 'một';
+                break;
+            case '2':
+                arr[index] = 'hai';
+                break;
+            case '3':
+                arr[index] = 'ba';
+                break;
+            case '4':
+                arr[index] = 'bốn';
+                break;
+            case '5':
+                arr[index] = 'năm';
+                break;
+            case '6':
+                arr[index] = 'sáu';
+                break;
+            case '7':
+                arr[index] = 'bảy';
+                break;
+            case '8':
+                arr[index] = 'tám';
+                break;
+            case '9':
+                arr[index] = 'chín';
+                break;
+        }
+    }
+
+    alert(arr.join(' '));
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bài 4</title>
+</head>
+<body>
+<p id="output"></p>
+
+<script>
+    let dataOutput = '';
+    let soLanCham = 1;
+    for(let row = 1; row < 6; row ++){
+        for(let col = 1; col < (10-soLanCham)/2; col ++){
+            dataOutput += '&nbsp&nbsp';
+        }
+        if(row == 1 || row == 5){
+            let vecham = 1;
+            if(row == 1){
+                veCham = 1;
+            }else{
+                veCham = 9;
+            }
+            while(veCham > 0 ){
+                dataOutput += '*';
+                veCham --;
+            }
+            dataOutput += '<br>';
+            soLanCham += 2;
+            continue;
+        }
+        for(let veSao = 1; veSao <= row; veSao ++){
+            if(veSao == 1 || veSao == row){
+                dataOutput += '*';
+                dataOutput += '&nbsp&nbsp';
+            }else{
+                dataOutput += '&nbsp&nbsp&nbsp&nbsp';
+            }
+        }
+        dataOutput += '<br>';
+        soLanCham += 2;
+    }
+    document.getElementById('output').innerHTML = dataOutput;
+
+</script>
+</body>
+</html>

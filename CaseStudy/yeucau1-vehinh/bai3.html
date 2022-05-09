@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bài 3</title>
+</head>
+<body>
+<p id="output"></p>
+
+<script>
+    let dataOutput = '';
+    let soLanCham = 1;
+    for(let row = 1; row < 6; row ++){
+        for(let col = 1; col < (10-soLanCham)/2; col ++){
+            dataOutput += '&nbsp&nbsp';
+        }
+        for(let veSao = 1; veSao <= soLanCham; veSao ++){
+            dataOutput += '*';
+        }
+        dataOutput += '<br>';
+        soLanCham += 2;
+
+    }
+    document.getElementById('output').innerHTML = dataOutput;
+
+</script>
+</body>
+</html>

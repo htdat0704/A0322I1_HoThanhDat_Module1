@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bài 3</title>
+</head>
+<body>
+<script>
+
+    let numerators = [5, 20, 5, 5, 5];
+    let denominators = [6, 3, 4, 2 , 6];
+
+    function maxFraction(numerators, denominators){
+        let max = parseFloat(numerators[0]/denominators[0]);
+        let indexMax = 0;
+        for(let index in numerators){
+            let fraction = parseFloat(numerators[index]/denominators[index]);
+            if(fraction > max){
+                indexMax = index;
+                max = fraction;
+            }
+        }
+        return indexMax;
+    }
+
+    alert(maxFraction(numerators, denominators));
+
+</script>
+</body>
+</html>
