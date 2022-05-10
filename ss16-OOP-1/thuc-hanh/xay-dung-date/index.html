@@ -7,32 +7,34 @@
 <body>
 <script>
 
-    function Date(day,month,year){
-        this.day = day;
-        this.month = month;
-        this.year = year;
-        this.getDay = () =>{
-            return "day = "+this.day;
-        };
-        this.getMonth = () =>{
-            return "month = "+this.month;
-        };
-        this.getYear = function(){
-            return "year = "+this.year;
-        }
-        this.setDay = (day) =>{
+    class Date {
+        constructor(day,month,year){
             this.day = day;
-        }
-        this.setMonth = (month) =>{
             this.month = month;
-        }
-        this.setYear = (year) =>{
             this.year = year;
+        }
+        getDay(){
+            return this.day;
+        }
+        getMonth(){
+            return this.day;
+        }
+        getYear(){
+            return this.day;
+        }
+        setDay(dayNew){
+            return this.day = dayNew;
+        }
+        setMonth(monthNew){
+            return this.day = monthNew;
+        }
+        setYear(dayYear){
+            return this.day = dayYear;
         }
     }
 
     let newDay = new Date(3,4,2022);
-    newDay.setDay(5);
+    newDay.setMonth(10);
     alert(newDay.getDay());
 
 

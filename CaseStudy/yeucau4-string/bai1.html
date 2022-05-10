@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bài 1</title>
+</head>
+<body>
+<script>
+
+    let string = 'tRuong   TuAn  HaI';
+    let arrayString = string.split('');
+    // for(let index = 1; index < arrayString.length; index++) {
+    //     if(arrayString[index] ==' '){
+    //         if(arrayString[index + 1] == arrayString[index]){
+    //             alert(index);
+    //             arrayString.splice(index, 1);
+    //         }
+    //     }
+    // }
+    for(let index in arrayString){
+        if(arrayString[index] ==' '){
+            if(arrayString[parseInt(index) + 1] == arrayString[index]){
+                alert(index);
+                arrayString.splice(index, 1);
+            }
+        }
+    }
+    alert(arrayString);
+</script>
+</body>
+</html>

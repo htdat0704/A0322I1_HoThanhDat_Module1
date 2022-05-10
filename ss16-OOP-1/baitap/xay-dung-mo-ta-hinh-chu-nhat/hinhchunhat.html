@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Hình chữ nhật</title>
+</head>
+<body onload="load()">
+change width: <input type="text" id="width" /> <input type="submit" onclick='changeWidth()'/> <br>
+change height: <input type="text" id="height" /> <input type="submit" onclick='changeHeight()'/> <br>
+<canvas id="myCanvas" width="500" height="500" style='border:1px solid black'></canvas>
+<p id="output"></p>
+<script>
+    let canvas = document.getElementById('myCanvas');
+    let ctx = canvas.getContext('2d');
+    class Rectangle {
+        constructor(height, width){
+            this.height = height;
+            this.width = width;
+        }
+        calPerimeter(){
+            return (this.height + this.width) * 2;
+        }
+        calArea(){
+            return this.width * this.height;
+        }
+        setHeight(newHeight) {
+            this.height = newHeight;
+        }
+        setWidth(newWidth) {
+            this.width = newWidth;
+        }
+        veCanvas(){
+            ctx.moveTo(100,100);
+            ctx.lineTo(100,(100+this.height));
+            ctx.lineTo((100+this.width),(100+this.height))
+            ctx.lineTo((100+this.width),(100))
+            ctx.lineTo((100),(100))
+            ctx.stroke();
+        }
+        deleteCanvas(){
+            ctx.clearRect(0, 0, 500, 500);
+        }
+    }
+
+    let hinhChuNhat = new Rectangle(100,200);
+    function load(){
+        ctx.clearRect(0, 0, 500, 500);
+        hinhChuNhat.veCanvas();
+    }
+    function changeWidth(){
+        let width = parseInt(document.getElementById('width').value);
+        hinhChuNhat.setWidth(width);
+        document.getElementById('output').innerHTML = "Diện tích ="+ hinhChuNhat.calArea()+" và Chu vi = "+hinhChuNhat.calPerimeter();
+    }
+    function changeHeight(){
+        let height = parseInt(document.getElementById('height').value);
+        hinhChuNhat.setHeight(height);
+        document.getElementById('output').innerHTML = "Diện tích ="+ hinhChuNhat.calArea()+" và Chu vi = "+hinhChuNhat.calPerimeter();
+    }
+
+    document.getElementById('output').innerHTML = "Diện tích ="+ hinhChuNhat.calArea()+" và Chu vi = "+hinhChuNhat.calPerimeter();
+    hinhChuNhat.veCanvas();
+
+
+
+</script>
+</body>
+</html>

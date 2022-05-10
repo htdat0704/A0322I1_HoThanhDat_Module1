@@ -7,26 +7,37 @@
 <body>
 <script>
 
-    function Student(id,name,address){
-        this.id = id;
-        this.name = name;
-        this.address = address;
-        this.getInfor = () => {
-            return "Id= "+ this.id + " Name = " + this.name + " Address= "+ this.address;
+    class Date {
+        constructor(day,month,year){
+            this.day = day;
+            this.month = month;
+            this.year = year;
+        }
+        getDay(){
+            return this.day;
+        }
+        getMonth(){
+            return this.day;
+        }
+        getYear(){
+            return this.day;
+        }
+        setDay(dayNew){
+            return this.day = dayNew;
+        }
+        setMonth(monthNew){
+            return this.day = monthNew;
+        }
+        setYear(dayYear){
+            return this.day = dayYear;
         }
     }
-    let student = new Student(1,'but','123 tien hoanh');
 
-    // let student = {
-    //     id: 1,
-    //     name: "badao",
-    //     address: "ok",
-    //     getInfor: function() {
-    //         return "Id= " + this.id + " Name = " + this.name + " Address= " + this.address;
-    //     }
-    // }
+    let newDay = new Date(3,4,2022);
+    newDay.setMonth(10);
+    alert(newDay.getDay());
 
-    console.log(student.getInfor());
+
 
 
 

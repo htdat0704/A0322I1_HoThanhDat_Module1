@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Temperature</title>
+</head>
+<body>
+<script>
+    class Temperature {
+        constructor(doC){
+            this.doC = doC;
+        }
+        changeF(){
+            return ((this.doC * 1.8) + 32);
+        }
+        changeKevin(){
+            return this.doC + 273.15;
+        }
+    }
+    let temperature = new Temperature(25);
+    document.write('nhiệt độ F = '+temperature.changeF());
+    document.write('<br>');
+    document.write('nhiệt độ Kevin = '+temperature.changeKevin());
+</script>
+</body>
+</html>
