@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Phone</title>
+    <style>
+        table{
+            border: 1px solid;
+            width: 500px;
+            height: 100px;
+        }
+    </style>
+</head>
+
+<body>
+
+<table >
+    <tr>
+        <th colspan="2" id="namePhone1"></th>
+    </tr>
+    <tr>
+        <td id="pinPhone1"></td>
+        <td><input type="submit" id='chargeOnOff1' onclick="chargingPhone(1)"/></td>
+    </tr>
+    <tr>
+        <td >Trạng thái sạc: </td>
+        <td id="chargingPhone1"></td>
+    </tr>
+    <tr>
+        <td id="onOffPhone1"></td>
+        <td><input type="submit" onclick="onOffPhone(1)" id="onOff1" /></td>
+    </tr>
+    <tr>
+        <td>Tin nhắn đến</td>
+        <td id="tinNhanDen1"><input type="submit"  value="Xem" onclick="showTinNhanDen(1)"/></td>
+    </tr>
+    <tr>
+        <td>Tin nhắn đã gửi</td>
+        <td id="tinNhanGui1"><input type="submit" value="Xem" onclick="showTinNhanGui(1)"/></td>
+    </tr>
+    <tr>
+        <td colspan="2" style="text-align:center; font-weight:bold;">Gửi tin nhắn</td>
+    </tr>
+    <tr>
+        <td>Đến</td>
+        <td>Nội dung</td>
+    </tr>
+    <tr id="guiTin1">
+        <td><input type="text" id="nameGui1" /></td>
+        <td><input type="text" id="noiDung1" /></td>
+    </tr>
+    <tr id="submit1">
+        <td colspan="2" style="text-align:center;">
+            <input type="submit" value="Gửi" onclick="guiTin(1)"/>
+        </td>
+    </tr>
+</table>
+<table >
+    <tr>
+        <th colspan="2" id="namePhone2"></th>
+    </tr>
+    <tr>
+        <td id="pinPhone2"></td>
+        <td><input type="submit" id='chargeOnOff2' onclick="chargingPhone(2)"/></td>
+    </tr>
+    <tr>
+        <td >Trạng thái sạc: </td>
+        <td id="chargingPhone2"></td>
+    </tr>
+    <tr>
+        <td id="onOffPhone2"></td>
+        <td><input type="submit" onclick="onOffPhone(2)" id="onOff2" /></td>
+    </tr>
+    <tr>
+        <td>Tin nhắn đến</td>
+        <td id="tinNhanDen2"><input type="submit"  value="Xem" onclick="showTinNhanDen(2)"/></td>
+    </tr>
+    <tr>
+        <td>Tin nhắn đã gửi</td>
+        <td id="tinNhanGui2"><input type="submit" value="Xem" onclick="showTinNhanGui(2)"/></td>
+    </tr>
+    <tr>
+        <td colspan="2" style="text-align:center; font-weight:bold;">Gửi tin nhắn</td>
+    </tr>
+    <tr>
+        <td>Đến</td>
+        <td>Nội dung</td>
+    </tr>
+    <tr id="guiTin2">
+        <td><input type="text" id="nameGui2" /></td>
+        <td><input type="text" id="noiDung2" /></td>
+    </tr>
+    <tr id="submit2">
+        <td colspan="2" style="text-align:center;">
+            <input type="submit" value="Gửi"  onclick="guiTin(2)"/>
+        </td>
+    </tr>
+
+</table>
+<script>
+    class TinNhan{
+        constructor(name, noiDung) {
+            this.name = name;
+            this.noiDung = noiDung;
+        }
+
+        getTinNhan(){
+            return 'Tới: '+this.name+' nội dung: '+this.noiDung;
+        }
+
+    }
+    class Phone {
+        constructor(name,dungLuongPin,onOffPhone,charging){
+            this.name = name;
+            this.dungLuongPin = dungLuongPin;
+            this.onOffPhone = onOffPhone;
+            this.charging = charging;
+            this.tinNhanDen = [];
+            this.tinNhanGui = [];
+        }
+        setTinNhanDen(tinNhanDenNew){
+            this.tinNhanDen.push(tinNhanDenNew);
+        }
+        setTinNhanGui(tinNhanGuiNew){
+            this.tinNhanGui.push(tinNhanGuiNew);
+        }
+        onChargingPhone(){
+            if(this.dungLuongPin < 100){
+                this.dungLuongPin += 5;
+            }
+        }
+        setCharge(){
+            if(this.charging == true){
+                this.charging = false;
+            }else{
+                this.charging = true;
+            }
+        }
+        setOnOff(){
+            if(this.onOffPhone == true){
+                this.onOffPhone = false;
+            }else{
+                this.onOffPhone = true;
+            }
+        }
+        setPinUse(){
+            this.dungLuongPin --;
+        }
+        lengthMessDen(){
+            return this.tinNhanDen.length;
+        }
+        lengthMessGui(){
+            return this.tinNhanGui.length;
+        }
+    }
+    let nokia = new Phone("Nokia",50,true,false);
+    let iphone = new Phone("Iphone",60,true,false);
+
+
+    function showPhone1(){
+        document.getElementById('namePhone1').innerText = 'Name: '+nokia.name;
+        document.getElementById('pinPhone1').innerText = 'pin: '+nokia.dungLuongPin;
+        if(nokia.onOffPhone == true){
+            document.getElementById('onOff1').value = 'Tắt';
+            document.getElementById('onOffPhone1').innerText = 'Trạng thái: Bật';
+        }else{
+            document.getElementById('onOff1').value = 'Bật';
+            document.getElementById('onOffPhone1').innerText = 'Trạng thái: Tắt';
+        }
+        if(nokia.charging == true){
+            document.getElementById('chargeOnOff1').value = 'Tắt Sạc';
+            document.getElementById('chargingPhone1').innerText = ' Đang sạc';
+        }else{
+            document.getElementById('chargeOnOff1').value = 'Sạc';
+            document.getElementById('chargingPhone1').innerText = ' Không sạc';
+        }
+    }
+
+    function showPhone2(){
+        document.getElementById('namePhone2').innerText = 'Name: '+iphone.name;
+        document.getElementById('pinPhone2').innerText = 'pin: '+iphone.dungLuongPin;
+        if(nokia.onOffPhone == true){
+            document.getElementById('onOff2').value = 'Tắt';
+            document.getElementById('onOffPhone2').innerText = 'Trạng thái: Bật';
+        }else{
+            document.getElementById('onOff2').value = 'Bật';
+            document.getElementById('onOffPhone2').innerText = 'Trạng thái: Tắt';
+        }
+        if(nokia.charging == true){
+            document.getElementById('chargeOnOff2').value = 'Tắt Sạc';
+            document.getElementById('chargingPhone2').innerText = ' Đang sạc';
+        }else{
+            document.getElementById('chargeOnOff2').value = 'Sạc';
+            document.getElementById('chargingPhone2').innerText = ' Không sạc';
+        }
+    }
+
+    function chargingPhone(value){
+        if(value == 1){
+            if(nokia.charging == true){
+                alert('Đã tắt sạc điện thoại');
+                document.getElementById('chargeOnOff1').value = 'Sạc';
+                document.getElementById('chargingPhone1').innerText = 'Không sạc';
+                document.getElementById('pinPhone1').innerText = 'pin: '+nokia.dungLuongPin;
+                nokia.setCharge();
+            }else{
+                alert('Đang sạc điện thoại');
+                document.getElementById('chargeOnOff1').value = 'Tắt Sạc';
+                document.getElementById('chargingPhone1').innerText = 'Đang sạc';
+                nokia.onChargingPhone();
+                nokia.setCharge();
+            }
+        }else{
+            if(iphone.charging == true){
+                alert('Đã tắt sạc điện thoại');
+                document.getElementById('chargeOnOff2').value = 'Sạc';
+                document.getElementById('chargingPhone2').innerText = 'Không sạc';
+                document.getElementById('pinPhone2').innerText = 'pin: '+iphone.dungLuongPin;
+                iphone.setCharge();
+            }else{
+                alert('Đang sạc điện thoại');
+                document.getElementById('chargeOnOff2').value = 'Tắt Sạc';
+                document.getElementById('chargingPhone2').innerText = 'Đang sạc';
+                iphone.onChargingPhone();
+                iphone.setCharge();
+            }
+        }
+    }
+
+    function onOffPhone(value){
+        if(value == 1){
+            if(nokia.onOffPhone == true){
+                alert('Tắt điện thoại');
+                shutDown(1);
+                document.getElementById('onOff1').value = 'Bật';
+                document.getElementById('onOffPhone1').innerText = 'Trạng thái: Tắt';
+                nokia.setPinUse();
+                document.getElementById('pinPhone1').innerText = 'pin: '+nokia.dungLuongPin;
+                nokia.setOnOff();
+            }else{
+                alert('Bật điện thoại');
+                returnButtonDen(1);
+                returnButtonGui(1);
+                returnButtonGuiTin(1);
+                document.getElementById('onOff1').value = 'Tắt';
+                document.getElementById('onOffPhone1').innerText = 'Trạng thái: Bật';
+                nokia.setPinUse();
+                document.getElementById('pinPhone1').innerText = 'pin: '+nokia.dungLuongPin;
+                nokia.setOnOff();
+            }
+        }else{
+            if(iphone.onOffPhone == true){
+                alert('Tắt điện thoại');
+                shutDown(2);
+                document.getElementById('onOff2').value = 'Bật';
+                document.getElementById('onOffPhone2').innerText = 'Trạng thái: Tắt';
+                iphone.setPinUse();
+                document.getElementById('pinPhone2').innerText = 'pin: '+iphone.dungLuongPin;
+                iphone.setOnOff();
+            }else{
+                alert('Bật điện thoại');
+                returnButtonDen(2);
+                returnButtonGui(2);
+                returnButtonGuiTin(2);
+                document.getElementById('onOff2').value = 'Tắt';
+                document.getElementById('onOffPhone2').innerText = 'Trạng thái: Bật';
+                iphone.setPinUse();
+                document.getElementById('pinPhone2').innerText = 'pin: '+iphone.dungLuongPin;
+                iphone.setOnOff();
+            }
+        }
+    }
+
+    let mess = new TinNhan('Nokia nokia','123456789');
+    nokia.setTinNhanDen(mess);
+    nokia.setTinNhanDen(mess);
+    iphone.setTinNhanDen(mess);
+
+    let show = '';
+    function showTinNhanDen(value){
+        show = '';
+        show = '<span style= >Hộp thư đến </span> <br>';
+        if(value == 1){
+            for(let index = 0; index < nokia.lengthMessDen(); index++){
+                show += nokia.tinNhanDen[index].getTinNhan() +" <br>" ;
+            }
+            show += '<input type="submit"  value="Tắt xem" onclick="returnButtonDen(1)"/>'
+            nokia.setPinUse();
+            document.getElementById('pinPhone1').innerText = 'pin: '+nokia.dungLuongPin;
+            document.getElementById('tinNhanDen1').innerHTML = show ;
+        }else{
+            for(let index = 0; index < iphone.lengthMessDen(); index++){
+                show += iphone.tinNhanDen[index].getTinNhan() +" <br>" ;
+            }
+            show += '<input type="submit"  value="Tắt xem" onclick="returnButtonDen(2)"/>'
+            iphone.setPinUse();
+            document.getElementById('pinPhone2').innerText = 'pin: '+iphone.dungLuongPin;
+            document.getElementById('tinNhanDen2').innerHTML = show ;
+        }
+    }
+    function returnButtonDen(value){
+        if(value == 1){
+            document.getElementById('tinNhanDen1').innerHTML =
+                '<input type="submit"  value="Xem" onclick="showTinNhanDen(1)"/>' ;
+        }else{
+            document.getElementById('tinNhanDen2').innerHTML =
+                '<input type="submit"  value="Xem" onclick="showTinNhanDen(2)"/>' ;
+        }
+
+    }
+    function showTinNhanGui(value){
+        show = '';
+        show = '<span style= >Hộp thư đã gửi </span> <br>';
+        if(value == 1){
+            for(let index = 0; index < nokia.lengthMessGui(); index++){
+                show += nokia.tinNhanGui[index].getTinNhan() +" <br>" ;
+            }
+            show += '<input type="submit"  value="Tắt xem" onclick="returnButtonGui(1)"/>'
+            nokia.setPinUse();
+            document.getElementById('pinPhone1').innerText = 'pin: '+nokia.dungLuongPin;
+            document.getElementById('tinNhanGui1').innerHTML = show ;
+        }else{
+            for(let index = 0; index < iphone.lengthMessGui(); index++){
+                show += iphone.tinNhanGui[index].getTinNhan() +" <br>" ;
+            }
+            show += '<input type="submit"  value="Tắt xem" onclick="returnButtonGui(2)"/>'
+            iphone.setPinUse();
+            document.getElementById('pinPhone2').innerText = 'pin: '+iphone.dungLuongPin;
+            document.getElementById('tinNhanGui2').innerHTML = show ;
+        }
+    }
+    function returnButtonGui(value){
+        if(value == 1){
+            document.getElementById('tinNhanGui1').innerHTML =
+                '<input type="submit"  value="Xem" onclick="showTinNhanGui(1)"/>' ;
+        }else{
+            document.getElementById('tinNhanGui2').innerHTML =
+                '<input type="submit"  value="Xem" onclick="showTinNhanGui(2)"/>' ;
+        }
+    }
+    function returnButtonGuiTin(value){
+        if(value == 1){
+            document.getElementById('guiTin1').innerHTML = '' +
+                '<td><input type="text" id="nameGui1" /></td>\n' +
+                '<td><input type="text" id="noiDung1" /></td>';
+            document.getElementById('submit1').innerHTML = '' +
+                '<td colspan="2" style="text-align:center;">\n' +
+                '<input type="submit" value="Gửi" onclick="guiTin(1)"/>\n' +
+                '</td>';
+        }else{
+            document.getElementById('guiTin2').innerHTML = '' +
+                '<td><input type="text" id="nameGui2" /></td>\n' +
+                '<td><input type="text" id="noiDung2" /></td>';
+            document.getElementById('submit2').innerHTML = '' +
+                '<td colspan="2" style="text-align:center;">\n' +
+                '<input type="submit" value="Gửi" onclick="guiTin(2)"/>\n' +
+                '</td>';
+        }
+    }
+
+    let shutDown = (value) => {
+        if(value == 1){
+            document.getElementById('tinNhanDen1').innerHTML = 'Bật điện thoại đê';
+            document.getElementById('tinNhanGui1').innerHTML = 'Bật điện thoại đê';
+            document.getElementById('guiTin1').innerHTML = 'Bật điện thoại đê';
+            document.getElementById('submit1').innerHTML = 'Bật điện thoại đê';
+        }else{
+            document.getElementById('tinNhanDen2').innerHTML = 'Bật điện thoại đê';
+            document.getElementById('tinNhanGui2').innerHTML = 'Bật điện thoại đê';
+            document.getElementById('guiTin2').innerHTML = 'Bật điện thoại đê';
+            document.getElementById('submit2').innerHTML = 'Bật điện thoại đê';
+        }
+    }
+    function guiTin(value){
+        if(value == 2){
+            let name = document.getElementById('nameGui2').value;
+            let noiDung = document.getElementById('noiDung2').value;
+            let mess2 = new TinNhan(name,noiDung);
+            if(name == 'nokia'){
+                nokia.setTinNhanDen(new TinNhan("iphone",noiDung));
+            }
+            iphone.setTinNhanGui(mess2);
+            document.getElementById('nameGui2').value = "";
+            document.getElementById('noiDung2').value = "";
+            iphone.setPinUse();
+            alert(mess2.getTinNhan() + " / gửi thành công");
+        }else{
+            nokia.setPinUse();
+            let name = document.getElementById('nameGui1').value;
+            let noiDung = document.getElementById('noiDung1').value;
+            let mess2 = new TinNhan(name,noiDung);
+            if(name == 'iphone'){
+                iphone.setTinNhanDen(new TinNhan("nokia",noiDung));
+            }
+            nokia.setTinNhanGui(mess2);
+            document.getElementById('nameGui1').value = "";
+            document.getElementById('noiDung1').value = "";
+            alert(mess2.getTinNhan() + " / gửi thành công");
+        }
+    }
+    showPhone1();
+    showPhone2();
+
+
+
+
+</script>
+</body>
+</html>
