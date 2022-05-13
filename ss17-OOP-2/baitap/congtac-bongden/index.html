@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Công tắc - bóng đèn</title>
+</head>
+<body>
+<p id="output"></p>
+<input type="submit" id="switch" onclick="switchBtn()"/>
+<script>
+
+    function switchBtn(){
+        if(switchButton.getStatus() == true){
+            switchButton.switchOff();
+            document.getElementById('switch').value = 'Bật';
+            document.getElementById('output').innerHTML = 'Trạng thái đèn '+switchButton.lamp.getBright();
+        }else{
+            switchButton.switchOn();
+            document.getElementById('switch').value = 'Tắt';
+            document.getElementById('output').innerHTML = 'Trạng thái đèn '+switchButton.lamp.getBright();
+        }
+    }
+    class SwitchButton {
+        constructor(status){
+            this.status = status;
+            this.lamp = {};
+        }
+
+        connectToLamp(electricLamp){
+            this.lamp = electricLamp;
+        }
+
+        switchOff(){
+            this.status = false;
+            this.lamp.turnOff();
+        }
+        switchOn(){
+            this.status = true;
+            this.lamp.turnOn();
+        }
+
+        getStatus(){
+            return this.status;
+        }
+    }
+
+    class ElectricLamp {
+        constructor(status){
+            this.status = status;
+        }
+        turnOff(){
+            this.status = false;
+        }
+        turnOn(){
+            this.status = true;
+        }
+        getBright(){
+            if(this.status == true){
+                return 'Đèn sáng';
+            }else{
+                return 'Đèn tắt'
+            }
+
+        }
+        setStatus(value){
+            this.status = value;
+        }
+    }
+
+    let switchButton = new SwitchButton(true);
+    let electricLamp = new ElectricLamp(false);
+    if(switchButton.getStatus() == true){
+        document.getElementById('switch').value = 'Bật';
+    }else{
+        document.getElementById('switch').value = 'Tắt';
+    }
+    switchButton.connectToLamp(electricLamp);
+    if(switchButton.status == true){
+        switchButton.lamp.setStatus(true);
+    }else{
+        switchButton.lamp.setStatus(false);
+    }
+    switchButton.connectToLamp(electricLamp);
+    document.getElementById('output').innerHTML = 'Trạng thái đèn '+switchButton.lamp.getBright();
+
+</script>
+</body>
+</html>
