@@ -144,6 +144,9 @@
             }
         }
         setPinUse(){
+            if(this.dungLuongPin == 1){
+                this.chargingNow();
+            }
             this.dungLuongPin --;
         }
         lengthMessDen(){
@@ -152,9 +155,27 @@
         lengthMessGui(){
             return this.tinNhanGui.length;
         }
+        chargingNow(){
+            if(this.name == 'Nokia'){
+                alert('Tắt điện thoại');
+                shutDown(1);
+                document.getElementById('onOff1').value = 'Bật';
+                document.getElementById('onOffPhone1').innerText = 'Trạng thái: Tắt';
+                document.getElementById('pinPhone1').innerText = 'pin: '+nokia.dungLuongPin;
+                nokia.setOnOff();
+            }else if(this.name == 'Iphone'){
+                alert('Tắt điện thoại');
+                shutDown(2);
+                document.getElementById('onOff2').value = 'Bật';
+                document.getElementById('onOffPhone2').innerText = 'Trạng thái: Tắt';
+                document.getElementById('pinPhone2').innerText = 'pin: '+iphone.dungLuongPin;
+                iphone.setOnOff();
+            }
+
+        }
     }
-    let nokia = new Phone("Nokia",50,true,false);
-    let iphone = new Phone("Iphone",60,true,false);
+    let nokia = new Phone("Nokia",10,true,false);
+    let iphone = new Phone("Iphone",15,true,false);
 
 
     function showPhone1(){
@@ -287,6 +308,9 @@
             show += '<input type="submit"  value="Tắt xem" onclick="returnButtonDen(1)"/>'
             nokia.setPinUse();
             document.getElementById('pinPhone1').innerText = 'pin: '+nokia.dungLuongPin;
+            if(nokia.dungLuongPin == 0){
+                show = 'Sạc điện thoại đê'
+            }
             document.getElementById('tinNhanDen1').innerHTML = show ;
         }else{
             for(let index = 0; index < iphone.lengthMessDen(); index++){
@@ -295,6 +319,9 @@
             show += '<input type="submit"  value="Tắt xem" onclick="returnButtonDen(2)"/>'
             iphone.setPinUse();
             document.getElementById('pinPhone2').innerText = 'pin: '+iphone.dungLuongPin;
+            if(iphone.dungLuongPin == 0){
+                show = 'Sạc điện thoại đê'
+            }
             document.getElementById('tinNhanDen2').innerHTML = show ;
         }
     }
@@ -318,6 +345,9 @@
             show += '<input type="submit"  value="Tắt xem" onclick="returnButtonGui(1)"/>'
             nokia.setPinUse();
             document.getElementById('pinPhone1').innerText = 'pin: '+nokia.dungLuongPin;
+            if(nokia.dungLuongPin == 0){
+                show = 'Sạc điện thoại đê'
+            }
             document.getElementById('tinNhanGui1').innerHTML = show ;
         }else{
             for(let index = 0; index < iphone.lengthMessGui(); index++){
@@ -326,6 +356,9 @@
             show += '<input type="submit"  value="Tắt xem" onclick="returnButtonGui(2)"/>'
             iphone.setPinUse();
             document.getElementById('pinPhone2').innerText = 'pin: '+iphone.dungLuongPin;
+            if(nokia.dungLuongPin == 0){
+                iphone = 'Sạc điện thoại đê'
+            }
             document.getElementById('tinNhanGui2').innerHTML = show ;
         }
     }
@@ -380,6 +413,7 @@
                 nokia.setTinNhanDen(new TinNhan("iphone",noiDung));
             }
             iphone.setTinNhanGui(mess2);
+            document.getElementById('pinPhone2').innerText = 'pin: '+iphone.dungLuongPin;
             document.getElementById('nameGui2').value = "";
             document.getElementById('noiDung2').value = "";
             iphone.setPinUse();
@@ -393,6 +427,7 @@
                 iphone.setTinNhanDen(new TinNhan("nokia",noiDung));
             }
             nokia.setTinNhanGui(mess2);
+            document.getElementById('pinPhone1').innerText = 'pin: '+nokia.dungLuongPin;
             document.getElementById('nameGui1').value = "";
             document.getElementById('noiDung1').value = "";
             alert(mess2.getTinNhan() + " / gửi thành công");
