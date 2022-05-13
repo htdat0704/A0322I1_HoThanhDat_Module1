@@ -26,16 +26,29 @@
             return this.day = dayNew;
         }
         setMonth(monthNew){
-            return this.day = monthNew;
+            return this.month = monthNew;
         }
         setYear(dayYear){
-            return this.day = dayYear;
+            return this.year = dayYear;
+        }
+        setDate(dayNew,monthNew,yearNew){
+            this.day = dayNew;
+            this.month = monthNew;
+            this.year = yearNew;
+        }
+        toString(){
+            return this.day+'/'+this.month+'/'+this.year;
         }
     }
 
     let newDay = new Date(3,4,2022);
     newDay.setMonth(10);
-    alert(newDay.getDay());
+    newDay.setDay(10);
+    newDay.setMonth(10);
+    newDay.setYear(2019);
+    newDay.setDate(10,23,1099);
+    alert(newDay.toString());
+
 
 
 
