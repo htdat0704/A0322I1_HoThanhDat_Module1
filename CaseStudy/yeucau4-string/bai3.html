@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bài 3</title>
+</head>
+<body>
+<script>
+
+    let string1 = 'aabcc3411';
+    let string2 = 'adcaa2324';
+
+    function shortenStringWithDuplicateChar(string){
+        let arrayString = string.split('');
+        for(let index in arrayString){
+            for(let indexDiff in arrayString){
+                if(index == indexDiff){
+                    continue;
+                }
+                if(arrayString[index] === arrayString[indexDiff]){
+                    arrayString.splice(indexDiff, 1);
+                }
+            }
+        }
+        return arrayString.join('');
+    }
+
+    function commonCharacterCount(s1, s2){
+        let arrayString1 = shortenStringWithDuplicateChar(s1);
+        let arrayString2 = shortenStringWithDuplicateChar(s2);
+        count = 0;
+        for(let index1 in arrayString1){
+            for(let index2 in arrayString2){
+                if(arrayString1[index1] == arrayString2[index2]){
+                    count ++;
+                }
+            }
+        }
+        return count;
+    }
+
+    alert(commonCharacterCount(string1,string2));
+
+
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bài 2</title>
+</head>
+<body>
+<script>
+
+    let string = 'cabcaaabcd';
+
+    function differentSymbolsNaive(string){
+        let arrayString = string.split('');
+        for(let index in arrayString){
+            for(let indexDiff in arrayString){
+                if(index == indexDiff){
+                    continue;
+                }
+                if(arrayString[index] === arrayString[indexDiff]){
+                    arrayString.splice(indexDiff, 1);
+                }
+            }
+        }
+        return arrayString.length;
+    }
+    alert(differentSymbolsNaive(string));
+
+
+</script>
+</body>
+</html>

@@ -6,26 +6,46 @@
 </head>
 <body>
 <script>
-
-    let string = 'tRuong   TuAn  HaI';
-    let arrayString = string.split('');
-    // for(let index = 1; index < arrayString.length; index++) {
-    //     if(arrayString[index] ==' '){
-    //         if(arrayString[index + 1] == arrayString[index]){
-    //             alert(index);
-    //             arrayString.splice(index, 1);
-    //         }
-    //     }
-    // }
-    for(let index in arrayString){
-        if(arrayString[index] ==' '){
-            if(arrayString[parseInt(index) + 1] == arrayString[index]){
-                alert(index);
-                arrayString.splice(index, 1);
+    let input = '  tRuong    TuAn   HaI Ne  ';
+    function chuanHoaXau(input){
+        let string = input.trim();
+        let arrayString = string.split('');
+        // lặp đến khi nào hết khoảng cách thì dừng
+        let exitDoWhile = true;
+        do{
+            for(let index in arrayString){
+                if(arrayString[index] ==' ' && arrayString[parseInt(index) + 1] == arrayString[index]){
+                    arrayString.splice(index, 1);
+                    exitDoWhile = false;
+                }
+            }
+            for(let index in arrayString){
+                if(arrayString[index] ==' ' && arrayString[parseInt(index) + 1] == arrayString[index]){
+                    exitDoWhile= true;
+                }
+            }
+        }while(exitDoWhile == true)
+        let upperCase = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        // chuyển tất cả thành chữ nhỏ
+        for( let index in arrayString){
+            if(upperCase.indexOf(arrayString[index]) > -1){
+                arrayString[index] = arrayString[index].toLowerCase();
             }
         }
+        // chuyển chữ cái đầu thành chữ hoa
+        for (let index in arrayString){
+            if(index == 0){
+                arrayString[index] = arrayString[index].toUpperCase();
+            }
+            if(arrayString[index] == ' '){
+                arrayString[parseInt(index) +1] = arrayString[parseInt(index) +1].toUpperCase();
+            }
+        }
+        let output = arrayString.join('');
+        return output
     }
-    alert(arrayString);
+    alert(chuanHoaXau(input));
+
 </script>
 </body>
 </html>

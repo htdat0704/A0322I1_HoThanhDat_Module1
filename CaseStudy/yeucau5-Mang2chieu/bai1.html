@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bài 1</title>
+</head>
+<body>
+<script>
+    let row = parseInt(prompt('nhập số lượng hàng'));
+    let col = parseInt(prompt('nhập số lượng cột'));
+
+    let arrayHaiMang = new Array(row);
+    for(let i = 0; i < arrayHaiMang.length; i++){
+        arrayHaiMang[i] = new Array(col);
+    }
+
+    let count = arrayHaiMang.length;
+
+    for(let hang = 0; hang <arrayHaiMang.length; hang++){
+        for(let cot = 0; cot <arrayHaiMang[hang].length; cot++){
+            let input = parseInt(prompt('Nhập vào giá trị ở cột '+(cot+1)+ ' của hàng '+(hang+1)));
+            arrayHaiMang[hang][cot] = input;
+        }
+    }
+
+    function sumEvenArray(arr){
+        let sum = 0;
+        for(let row = 0; row <arr.length; row++){
+            for(let col = 0; col <arr[row].length; col++){
+                if(arrayHaiMang[row][col] % 2 == 0){
+                    sum += arrayHaiMang[row][col];
+                }
+            }
+        }
+        return sum;
+    }
+
+    alert(sumEvenArray(arrayHaiMang));
+</script>
+</body>
+</html>
