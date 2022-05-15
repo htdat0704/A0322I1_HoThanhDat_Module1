@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bài 2</title>
+</head>
+<body>
+<script>
+
+    function listPrimes(arr){
+        let arrayOutput = [];
+        for(let row in arr){
+            for(let col in arr[row]){
+                let giamDan = arr[row][col];
+                let count = 0;
+                while(giamDan >0){
+                    if(arr[row][col] % giamDan == 0){
+                        count ++;
+                    }
+                    giamDan --;
+                }
+                if(count == 2){
+                    arrayOutput.push(arr[row][col]);
+                }
+            }
+        }
+        return arrayOutput;
+    }
+    function countArray(arr){
+        return arr.length;
+    }
+
+    let arr = new Array(4);
+    for(let i =0; i < arr.length; i++){
+        arr[i] = new Array(4);
+    }
+    for(let i =0; i < arr.length; i++){
+        for(let j = 0; j < 4; j++){
+            arr[i][j] = Math.floor(Math.random()*301); // random 1 - 300
+        }
+    }
+
+    alert("Cho mảng: "+arr);
+    alert('Số nguyên tố có trong mảng 2 chiều là các số: '+listPrimes(arr));
+    alert('Số lượng số nguyên tố có trong mảng 2 chiều là: '+countArray(listPrimes(arr)));
+
+</script>
+</body>
+</html>
