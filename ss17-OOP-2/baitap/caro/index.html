@@ -18,6 +18,7 @@
     </style>
 </head>
 <body>
+<input type="submit" value="Reset" onclick="reset()" />
 <div id="game-board">
     <div id="cell-0-0" onclick="play(0,0)" class="cell" style="position: absolute; width: 40px; height:40px; left:0px; top:0px; line-height: 40px;"></div>
     <div id="cell-0-1" onclick="play(0,1)" class="cell" style="position: absolute; width: 40px; height:40px; left:40px; top:0px; line-height: 40px;"></div>
@@ -120,59 +121,157 @@
     <div id="cell-9-8" onclick="play(9,8)" class="cell" style="position: absolute; width: 40px; height:40px; left:320px; top:360px; line-height: 40px;"></div>
     <div id="cell-9-9" onclick="play(9,9)" class="cell" style="position: absolute; width: 40px; height:40px; left:360px; top:360px; line-height: 40px;"></div>
 </div>
+
+
 <script>
-let turnXO = 0;
 class Player{
     constructor(symbol){
         this.symbol = symbol;
     }
+    getSymbol(){
+        return this.symbol;
+    }
 }
 class BoardGame{
-    constructor(board){
-        this.board = board;
+    constructor(player1,player2,board,endGame){
+        this.boardArray = board;
+        this.player1 = player1;
+        this.player2 = player2;
+        this.turnXO = 1;
+        this.endGame = endGame;
     }
-    winner(x,y){
-        for(let i =0; i<5; i++){
+    setTurn(){
+        this.turnXO = 1;
+    }
+    checkWinner() {
+        for(let i =0; i<10; i++){
 
-            for(let j =0;j<3; j++){
-                if(boardArray[i][j] == boardArray[i][j+1] && boardArray[i][j] == boardArray[i][j+2]){
-                    if(boardArray[i][j] == "x"){
-                        changeHTML = false;
+            for(let j =0;j<6; j++){
+                if(this.getBoard(i,j) == this.getBoard(i,j+1) &&
+                    this.getBoard(i,j) == this.getBoard(i,j+4) &&
+                    this.getBoard(i,j) == this.getBoard(i,j+3) &&
+                    this.getBoard(i,j) == this.getBoard(i,j+2)){
+                    if(this.getBoard(i,j) == this.getSymbolPlayer1()){
+                        this.setEndGame(true);
                         alert("First player winner");
-                    }else if(boardArray[i][j] == "0"){
-                        changeHTML = false;
+                    }else if(this.getBoard(i,j) == this.getSymbolPlayer2()){
+                        this.setEndGame(true);
                         alert("Second player winner");
                     }
                 }
             }
 
-            for(let k =0; k<3;k++){
-                if(boardArray[k][i] == boardArray[k+1][i] && boardArray[k][i] == boardArray[k+2][i]){
-                    if(boardArray[k][i] == "x"){
-                        changeHTML = false;
+            for(let k =0; k<6;k++){
+                if(this.getBoard(k,i) == this.getBoard(k+1,i) &&
+                    this.getBoard(k,i) == this.getBoard(k+2,i) &&
+                    this.getBoard(k,i) == this.getBoard(k+3,i) &&
+                    this.getBoard(k,i) == this.getBoard(k+4,i) ){
+                    if(this.getBoard(k,i) == this.getSymbolPlayer1()){
+                        this.setEndGame(true);
                         alert("First player winner");
-                    }else if(boardArray[k][i] == "0"){
-                        changeHTML = false;
+                    }else if(this.getBoard(k,i) == this.getSymbolPlayer2()){
+                        this.setEndGame(true);
                         alert("Second player winner");
                     }
                 }
             }
 
-            for(let g = 0; g<3; g++){
-                if(i<3){
-                    if(boardArray[i][g] == boardArray[i+1][g+1] && boardArray[i][g] == boardArray[i+2][g+2]){
-                        if(boardArray[i][g] == "x"){
-                            changeHTML = false;
+            for(let g = 0; g<6; g++){
+                if(i<6){
+                    if(this.getBoard(i,g) == this.getBoard(i+1,g+1) &&
+                        this.getBoard(i,g) == this.getBoard(i+2,g+2) &&
+                        this.getBoard(i,g) == this.getBoard(i+3,g+3) &&
+                        this.getBoard(i,g) == this.getBoard(i+4,g+4)){
+                        if(this.getBoard(i,g) == this.getSymbolPlayer1()){
+                            this.setEndGame(true);
                             alert("First player winner");
-                        }else if(boardArray[i][g] == "0"){
-                            changeHTML = false;
+                        }else if(this.getBoard(i,g) == this.getSymbolPlayer2()){
+                            this.setEndGame(true);
                             alert("Second player winner");
                         }
                     }
                 }
             }
+
+        }
+    }
+    setBoard(x,y,value){
+        this.boardArray[x][y] = value;
+    }
+    enterSymbol(){
+        this.turnXO += 1;
+        if(this.turnXO % 2 == 0){
+            return 'X';
+        }else{
+            return '0';
+        }
+    }
+    getBoard(x,y){
+        if(x<10 && y<10 && x>-1 && y>-1){
+            return this.boardArray[x][y];
+        }else{
+            return 9;
+        }
+    }
+    getSymbolPlayer1(){
+        return this.player1.getSymbol();
+    }
+    getSymbolPlayer2(){
+        return this.player2.getSymbol();
+    }
+    getEndGame(){
+        return this.endGame;
+    }
+    setEndGame(endGameNew){
+        this.endGame = endGameNew;
+    }
+    deleteAllBoard(){
+        for(let index = 0; index < this.boardArray.length; index++) {
+            for(let index2 in this.boardArray[index]){
+                this.boardArray[index][index2] = " ";
+            }
+        }
     }
 }
+let boardArray = new Array(10);
+for(let index = 0; index < boardArray.length; index++) {
+    boardArray[index] = new Array(9);
+}
+
+let player1 = new Player('X');
+let player2 = new Player('0');
+let arrayBoardGame = new BoardGame(player1,player2,boardArray,false);
+
+function play(col,row){
+    if(arrayBoardGame.getEndGame() == true){
+        alert('Đã có người chiến thắng Restart đi nào');
+    }else{
+        if(arrayBoardGame.getBoard(col,row) == arrayBoardGame.getSymbolPlayer1() ||
+            arrayBoardGame.getBoard(col,row) == arrayBoardGame.getSymbolPlayer2() ){
+            alert('Đã có người đánh rồi')
+        }else{
+            let symbol = arrayBoardGame.enterSymbol();
+            arrayBoardGame.setBoard(col,row,symbol);
+            let idCell = "cell-"+col+"-"+row;
+            document.getElementById(idCell).innerText = arrayBoardGame.getBoard(col,row);
+            arrayBoardGame.checkWinner();
+        }
+    }
+}
+function reset(){
+    arrayBoardGame.setEndGame(false);
+    for(let i = 0 ; i< 10; i++){
+        for(let j = 0; j <10 ; j++){
+            let idCell = "cell-"+i+"-"+j;
+            document.getElementById(idCell).innerText = ' ';
+        }
+    }
+    arrayBoardGame.deleteAllBoard();
+    arrayBoardGame.setTurn();
+}
+
+
+
 </script>
 </body>
 </html>
