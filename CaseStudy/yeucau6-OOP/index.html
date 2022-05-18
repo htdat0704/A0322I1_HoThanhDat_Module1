@@ -19,9 +19,45 @@
     <input type="submit" value="Xem vé đã mua" id="ketQua" onclick="xemVeDaMua()"/>
     <input type="submit" value="Xem kết quả" id="veDaMua" onclick="ketQuaFunction()"/>
 </div>
+<dib><br> <br>
+    <table border="1px center" cellspacing="0" id="tableHTML" style="text-align:center;">
+    </table>
+</dib>
 <script>
+    let tableHTML = "<tr>\n" +
+        "            <th>STT</th>\n" +
+        "            <th>FirstNum</th>\n" +
+        "            <th>SecondNum</th>\n" +
+        "            <th>ThirdNum</th>\n" +
+        "            <th>FourthNum</th>\n" +
+        "            <th>FifthNum</th>\n" +
+        "            <th>SixthNum</th>\n" +
+        "        </tr>";
     let arrayVeMua = [];
     let muaVe = false;
+    function resetTableVe(){
+        for( let index in arrayVeMua){
+            tableHTML+= "<tr>\n" +
+                "            <td>"+(parseInt(index)+1)+"</td>\n" +
+                "            <td>"+arrayVeMua[index].getNumber1()+"</td>\n" +
+                "            <td>"+arrayVeMua[index].getNumber2()+"</td>\n" +
+                "            <td>"+arrayVeMua[index].getNumber3()+"</td>\n" +
+                "            <td>"+arrayVeMua[index].getNumber4()+"</td>\n" +
+                "            <td>"+arrayVeMua[index].getNumber5()+"</td>\n" +
+                "            <td>"+arrayVeMua[index].getNumber6()+"</td>\n" +
+                "        </tr>"
+        }
+        document.getElementById('tableHTML').innerHTML = tableHTML;
+        tableHTML = "<tr>\n" +
+            "            <th>STT</th>\n" +
+            "            <th>FirstNum</th>\n" +
+            "            <th>SecondNum</th>\n" +
+            "            <th>ThirdNum</th>\n" +
+            "            <th>FourthNum</th>\n" +
+            "            <th>FifthNum</th>\n" +
+            "            <th>SixthNum</th>\n" +
+            "        </tr>";
+    }
     class VeSo{
         constructor(number1,number2,number3,number4,number5,number6){
             this.number1 = number1;
@@ -103,6 +139,7 @@
             document.getElementById('number4').value = 0;
             document.getElementById('number5').value = 0;
             document.getElementById('number6').value = 0;
+            resetTableVe();
             muaVe = false;
         }else{
             let choice = prompt('Bạn có 2 lựa chọn \n 1. Tự chọn số \n 2. Hệ thống random');

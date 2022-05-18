@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Giao diện</title>
+    <style>
+
+        .left-column {
+            margin-top: -10px;
+            width: 20%;
+            height: 150px;
+            float: left;
+        }
+        .right-column {
+            margin-top: -10px;
+            width: 80%;
+            height: 150px;
+            float: right;
+        }
+    </style>
+</head>
+<body>
+<h2 style="text-align:center;">Hệ thông quản lý bài tập Casestudy module 1</h2>
+<hr>
+<div class="left-column" >
+    <br><br><br>
+    <div style="margin-left:50px;">
+        <select id="yeuCau1" onchange="changeFunc(value);">
+            <option hidden>Bài tập 1</option>
+        </select><br><br><br>
+        <select id="yeuCau2" onchange="changeFunc(value);">
+            <option hidden>Bài tập 2</option>
+            <option >Bài tập 2</option>
+        </select><br><br><br>
+        <select id="yeuCau3" onchange="changeFunc(value);">
+            <option hidden>Bài tập 3</option>
+        </select><br><br><br>
+        <select id="yeuCau4" onchange="changeFunc(value);">
+            <option hidden>Bài tập 4</option>
+        </select><br><br><br>
+        <select id="yeuCau5" onchange="changeFunc(value);">
+            <option hidden>Bài tập 5</option>
+        </select>
+    </div>
+</div>
+<div class="right-column">
+    <hr width="1" size="550" style="margin-left: 0px; margin-top:0px;">
+</div>
+
+<script>
+    let yeuCau1 = '<option hidden>Bài tập 1</option>';
+    let yeuCau2 = '<option hidden>Bài tập 2</option>';
+    let yeuCau3 = '<option hidden>Bài tập 3</option>';
+    let yeuCau4 = '<option hidden>Bài tập 4</option>';
+    let yeuCau5 = '<option hidden>Bài tập 5</option>';
+
+    let nameBaiTap ='';
+    let linkBaiTap = '';
+
+    for(let baiTap = 1; baiTap < 5; baiTap++) {
+        nameBaiTap = 'bai'+baiTap; //bai1
+        linkBaiTap = '../yeucau1-vehinh/'+nameBaiTap+'.html';
+        yeuCau1 += '<option value="'+linkBaiTap+'">Bài '+baiTap+'</option>'
+    }
+    for(let baiTap = 1; baiTap < 3; baiTap++) {
+        nameBaiTap = 'bai'+baiTap; //bai1
+        linkBaiTap = '../yeucau2-if-switch-case/'+nameBaiTap+'.html';
+        yeuCau2 += '<option value="'+linkBaiTap+'">Bài '+baiTap+'</option>'
+    }
+    for(let baiTap = 1; baiTap < 4; baiTap++) {
+        nameBaiTap = 'bai'+baiTap; //bai1
+        linkBaiTap = '../yeucau4-string/'+nameBaiTap+'.html';
+        yeuCau4 += '<option value="'+linkBaiTap+'">Bài '+baiTap+'</option>'
+    }
+    for(let baiTap = 1; baiTap < 4; baiTap++) {
+        nameBaiTap = 'bai'+baiTap; //bai1
+        linkBaiTap = '../yeucau5-Mang2chieu/'+nameBaiTap+'.html';
+        yeuCau5 += '<option value="'+linkBaiTap+'">Bài '+baiTap+'</option>'
+    }
+    for(let baiTap = 1; baiTap < 6; baiTap++) {
+        nameBaiTap = 'bai'+baiTap; //bai1
+        linkBaiTap = '../yeucau3-mang-loop/'+nameBaiTap+'.html';
+        yeuCau3 += '<option value="'+linkBaiTap+'">Bài '+baiTap+'</option>'
+    }
+    function changeFunc(link){
+        window.location = link;
+    }
+
+    document.getElementById('yeuCau1').innerHTML = yeuCau1;
+    document.getElementById('yeuCau2').innerHTML = yeuCau2;
+    document.getElementById('yeuCau3').innerHTML = yeuCau3;
+    document.getElementById('yeuCau4').innerHTML = yeuCau4;
+    document.getElementById('yeuCau5').innerHTML = yeuCau5;
+
+
+</script>
+
+</body>
+</html>
