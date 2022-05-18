@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Remote</title>
+</head>
+<body>
+<table border="1px" cellspacing="0" cellpadding="10px">
+    <tr cellspacing="0" cellpadding="10px">
+        <th>TV </th>
+        <th colspan="2" id="name"></th>
+    </tr>
+    <tr style="text-align:center" >
+        <td cellspacing="20px" important colspan="3"  id="trangThai"> </td>
+    </tr>
+
+    <tr>
+        <td colspan="2" id="kenh"></td>
+        <td id="amLuong"></td>
+    </tr>
+</table> <br>
+<table border="1px" cellspacing="0" cellpadding="10px">
+    <tr>
+        <th>Remote: </th>
+        <th colspan='2' id="codeRemote"></th>
+    </tr>
+    <tr>
+        <td >Bật tắt TV</td>
+        <td colspan='2' style="text-align:center">
+            <input id="batTat" type="submit" onclick="batTatTV()" value="Bấm"/>
+        </td>
+    </tr>
+    <tr>
+        <td >Chuyển kênh</td>
+        <td ><input type="number" style="width:65px;" id="kenhChuyen"/></td>
+        <td ><input type="submit"  onclick="chuyenKenh()" value="Bấm"/></td>
+    </tr>
+    <tr>
+        <td >Điều chỉnh âm lượng</td>
+        <td ><input type="number" min = '1' max="100" step="1" id="amLuongChuyen" /></td>
+        <td ><input type="submit"  onclick="chuyenAmLuong()" value="Bấm"/></td>
+    </tr>
+</table>
+<script>
+    class Remote {
+        constructor(code,tV){
+            this.code = code;
+            this.tV = tV;
+        }
+        setKenhRemote(kenh){
+            this.tV.setKenh(kenh);
+        }
+        setSound(sound){
+            this.tV.setSound(sound);
+        }
+        setOnOffRemote(onOff){
+            if(this.tV.getOnOff() == true){
+                this.tV.setOnOff(false);
+            }else{
+                this.tV.setOnOff(true);
+            }
+        }
+        getCode(){
+            return this.code;
+        }
+
+    }
+    class TiVi {
+        constructor(name,onOff,kenh,sound){
+            this.name = name;
+            this.onOff = onOff;
+            this.kenh = kenh;
+            this.sound = sound;
+        }
+        setOnOff(onOff){
+            this.onOff = onOff;
+        }
+        setKenh(kenh){
+            this.kenh = kenh;
+        }
+        setSound(sound){
+            this.sound = sound;
+        }
+        getKenh(){
+            return this.kenh;
+        }
+        getSound(){
+            return this.sound;
+        }
+        getOnOff(){
+            return this.onOff;
+        }getName(){
+            return this.name;
+        }
+    }
+    function start(){
+        document.getElementById('name').innerHTML = tVSony.getName();
+        document.getElementById('kenh').innerHTML = "Kênh: "+tVSony.getKenh();
+        if(tVSony.getOnOff() == true){
+            document.getElementById('trangThai').innerHTML = '<p style="color:blue;"> On </p>';
+            document.getElementById('batTat').value = 'Tăt';
+        }else{
+            document.getElementById('trangThai').innerHTML = '<p style="color:red;"> Off </p>';
+            document.getElementById('batTat').value = 'Bật';
+        }
+        document.getElementById('amLuong').innerHTML = "Âm Lượng: "+tVSony.getSound();
+        document.getElementById('codeRemote').innerText = remote.getCode();
+    }
+    function batTatTV(){
+        remote.setOnOffRemote();
+        if(tVSony.getOnOff() == true){
+            document.getElementById('trangThai').innerHTML = '<p style="color:blue;"> On </p>';
+            document.getElementById('batTat').value = 'Tăt';
+        }else{
+            document.getElementById('trangThai').innerHTML = '<p style="color:red;"> Off </p>';
+            document.getElementById('batTat').value = 'Bật';
+        }
+    }
+    function chuyenKenh(){
+        let changeKenh = document.getElementById('kenhChuyen').value;
+        remote.setKenhRemote(changeKenh);
+        document.getElementById('kenh').innerHTML = "Kênh: "+tVSony.getKenh();
+        document.getElementById('kenhChuyen').value = "";
+    }
+    function chuyenAmLuong(){
+        let changeAmLuong = document.getElementById('amLuongChuyen').value;
+        remote.setSound(changeAmLuong);
+        document.getElementById('amLuong').innerHTML = "Âm Lượng: "+tVSony.getSound();
+        document.getElementById('amLuongChuyen').value = "";
+    }
+    let tVSony = new TiVi("Sony",true,3,34);
+    let remote = new Remote('001',tVSony);
+    start();
+</script>
+</body>
+</html>
