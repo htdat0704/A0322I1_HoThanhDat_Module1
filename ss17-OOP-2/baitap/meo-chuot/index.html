@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Mèo bắt chuột</title>
+</head>
+<body>
+<script>
+    class Rat{
+        constructor(name,khoiLuong,speed,live){
+            this.name = name;
+            this.khoiLuong = khoiLuong;
+            this.speed = speed;
+            this.live = live;
+        }
+        beingEat(){
+            this.live = false
+        }
+        makeSound(){
+            return alert(this.name+' kêu: Chít Chít');
+        }
+        getSpeed(){
+            return this.speed;
+        }
+        getName(){
+            return this.name;
+        }
+        getLive(){
+            return this.live;
+        }
+        getKhoiLuong(){
+            return this.khoiLuong;
+        }
+    }
+    class Cat{
+        constructor(name,khoiLuong,speed){
+            this.name = name;
+            this.khoiLuong = khoiLuong;
+            this.speed = speed;
+        }
+        getName(){
+            return this.name;
+        }
+        makeSound(){
+            return alert(this.name+' kêu: Meo Meo');
+        }
+        getSpeed(){
+            return this.speed;
+        }
+        catchRat(rat){
+            if(this.getSpeed() > rat.getSpeed()){
+                alert(this.getName()+' đã bắt thành công Rat: '+rat.getName());
+            }else{
+                alert(rat.getName()+' chạy nhanh quá nên '+this.getName()+' bắt không kịp');
+            }
+        }
+        growUp(khoiLuongNew){
+            this.khoiLuong += khoiLuongNew;
+        }
+        eatRat(rat){
+            if(rat.getLive() == true){
+                rat.beingEat();
+                this.growUp(rat.getKhoiLuong());
+                alert('Rat '+rat.getName()+' đã bị ăn bởi '+this.getName());
+            }else{
+                alert('Rat '+rat.getName()+' đã chết không ăn được');
+            }
+        }
+        getKhoiLuongCat(){
+            return this.khoiLuong;
+        }
+    }
+
+    let mouse = new Rat('mouse',5,10,true);
+    let mouse2 = new Rat('mouse2',5,10,false);
+    let jerry = new Rat('jerry',5,20,true);
+    let tom = new Cat('tom',12,15);
+    tom.catchRat(mouse2);
+    tom.catchRat(jerry);
+    tom.catchRat(mouse);
+    jerry.makeSound();
+    tom.makeSound();
+    alert('Khối lượng hiện tại của '+tom.getName()+' là: '+tom.getKhoiLuongCat())
+    tom.eatRat(mouse2);
+    tom.eatRat(jerry);
+    alert('Khối lượng hiện tại của '+tom.getName()+' là: '+tom.getKhoiLuongCat())
+    tom.eatRat(mouse);
+    alert('Khối lượng hiện tại của '+tom.getName()+' là: '+tom.getKhoiLuongCat())
+
+</script>
+</body>
+</html>
