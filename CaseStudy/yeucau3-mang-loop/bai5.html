@@ -17,7 +17,7 @@
 <!--</ol>-->
 <ol id="menu">
 </ol>
-<input type="submit" value="Gọi món" onclick="goiMon()"/>
+<input type="submit" value="Gọi món" onclick="order()"/>
 <p id="xuatHoaDon"></p>
 <p id="tongTien"></p>
 
@@ -40,8 +40,9 @@
     for(let index in menuArray){
         menuFull += (parseInt(index)+1)+'. Món '+menuArray[index]+' có giá: '+moneyMenu[index]+' \n';
     }
+    menuFull += 'Bấm số 7 để out gọi món nhé';
 
-    function goiMon(){
+    function order(){
         let numberMenu = 0;
         while(true){
             numberMenu = parseInt(prompt(menuFull));
@@ -58,12 +59,12 @@
                 break;
             }
             let soLuong = parseInt(prompt('Nhập số lượng '+menuArray[position]+' được gọi món'));
-            bill += 'Món '+menuArray[position]+'; số lượng '
-                +soLuong+' có giá ='+moneyMenu[position]*soLuong+' VNĐ <br>';
+            bill += 'Món '+menuArray[position]+' số lượng: '+soLuong+' có giá: '
+                +moneyMenu[position]+' VNĐ tổng là: '+moneyMenu[position]*soLuong+'<br>';
             total += moneyMenu[position]*soLuong;
         }
         document.getElementById('xuatHoaDon').innerHTML = bill;
-        document.getElementById('tongTien').innerHTML = 'Tổng hóa đơn là '+total+' VNĐ';
+        document.getElementById('tongTien').innerHTML = 'Tổng hóa đơn là: '+total+' VNĐ';
     }
 
 
