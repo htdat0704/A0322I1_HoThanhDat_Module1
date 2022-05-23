@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Yêu cầu 2</title>
+    <link rel="stylesheet" type="text/css" href="css.css">
+</head>
+<body>
+<div id="menu">
+    <ul>
+        <li><a href="#" onclick="showInformation()">Show Information</a></li>
+        <li><a href="#" onclick="editInformation()">Edit Information</a></li>
+        <li><a href="#" onclick="showAmount()">Show the amount to be paid after discount</a></li>
+    </ul>
+</div>
+
+    <div id="output" >
+    </div>
+
+<script>
+    let output = '';
+    let customerMember = ['Diamond','Platinum','Gold','Silver','Member'];
+    let customerDiscount = [15,10,5,2,0];
+    let typeRoomArr = ['Vip','Business','Normal'];
+    let serviceChoice = ['Villa','House','Room'];
+    let serviceMoney = [500,300,100];
+
+    function showInformation() {
+        customer.showInfor();
+        document.getElementById('output').innerHTML = output;
+    }
+    function editInformation() {
+        customer.showEditInfor();
+        document.getElementById('output').innerHTML = output;
+    }
+    function submitEdit(){
+        let cmnd = document.getElementById('cmnd').value;
+        let name = document.getElementById('name').value;
+        let date = document.getElementById('date').value;
+        let email = document.getElementById('email').value;
+        let address = document.getElementById('address').value;
+        let customer2 = document.getElementById('customer').value;
+        let coupon = parseInt(document.getElementById('coupon').value);
+        let quantity = document.getElementById('quantity').value;
+        let rentDays = parseInt(document.getElementById('rentDays').value);
+        let service = parseInt(document.getElementById('service').value);
+        let typeRoom = document.getElementById('typeRoom').value;
+        customer.setData(name,cmnd,date,email,address,customer2,coupon,quantity,rentDays,service,typeRoom);
+        customer.showInfor();
+        document.getElementById('output').innerHTML = output;
+    }
+    function showAmount(){
+        customer.showAmount();
+        document.getElementById('output').innerHTML = output;
+    }
+    class Customer {
+        constructor(name,cmnd,date,email,address,customer,coupon,quantity,rentDays,
+                    service,typeRoom){
+            this.name = name;
+            this.cmnd = cmnd;
+            this.date = date;
+            this.email = email;
+            this.address = address;
+            this.customer = customer;
+            this.coupon = coupon;
+            this.quantity = quantity;
+            this.rentDays = rentDays;
+            this.service = service;
+            this.typeRoom =typeRoom;
+        }
+        nameService(){
+            let output = '';
+            switch(this.service){
+                case 500:
+                    output = "Villa";
+                    break;
+                case 300:
+                    output = 'House';
+                    break;
+                case 100:
+                    output = 'Room';
+                    break;
+            }
+            return output;
+        }
+        showInfor(){
+            output = '<table>';
+            output += '<tr><td>Tên</td><td>'+this.name+'</td></tr>';
+            output += '<tr><td>CMND</td><td>'+this.cmnd+'</td></tr>';
+            output += '<tr><td>Ngày sinh</td><td>'+this.date+'</td></tr>';
+            output += '<tr><td>Email</td><td>'+this.email+'</td></tr>';
+            output += '<tr><td>Địa chỉ</td><td>'+this.address+'</td></tr>';
+            output += '<tr><td>Customer</td><td>'+this.customer+'</td></tr>';
+            output += '<tr><td>Giảm giá</td><td>'+this.coupon+'</td></tr>';
+            output += '<tr><td>Số lượng đi kèm</td><td>'+this.quantity+'</td></tr>';
+            output += '<tr><td>Số ngày thuê</td><td>'+this.rentDays+'</td></tr>';
+            output += '<tr><td>Dịch vụ</td><td>'+this.nameService()+'</td></tr>';
+            output += '<tr><td>Loại phòng thuê</td><td>'+this.typeRoom+'</td></tr>';
+            output += '</table>';
+        }
+        showEditInfor(){
+            output = '<table>';
+            output += '<tr><td>Tên</td><td><input id="name" type="text" value="'+this.name+'"/></td></tr>';
+            output += '<tr><td>CMND</td><td><input id="cmnd" type="text" value="'+this.cmnd+'"/></td></tr>';
+            output += '<tr><td>Ngày sinh</td><td><input id="date" type="date" value="'+this.date+'"/></td></tr>';
+            output += '<tr><td>Email</td><td><input id="email" type="email" value="'+this.email+'"/></td></tr>';
+            output += '<tr><td>Địa chỉ</td><td><input id="address" type="text" value="'+this.address+'"/></td></tr>';
+            output += '<tr><td>Customer</td><td><select id="customer">';
+            for(let index in customerMember){
+                if(customerMember[index] == this.customer){
+                    output += '<option value="'+customerMember[index]+'" selected>'
+                        +customerMember[index]+'</option>';
+                    continue;
+                }
+                output += '<option value="'+customerMember[index]+'">'
+                    +customerMember[index]+'</option>';
+            }
+            output += '</td></tr>';
+            output += '<tr><td>Giảm giá</td><td><input id="coupon" type="number" value="'+this.coupon+'"/></td></tr>';
+            output += '<tr><td>Số lượng đi kèm</td><td><input id="quantity" type="number" value="'+this.quantity+'"/></td></tr>';
+            output += '<tr><td>Số ngày thuê</td><td><input id="rentDays" type="number" value="'+this.rentDays+'"/></td></tr>';
+            output += '<tr><td>Dịch vụ</td><td><select id="service">';
+            for(let index in typeRoomArr){
+                if(serviceMoney[index] == this.service){
+                    output += '<option value="'+serviceMoney[index]+'" selected>'
+                        +serviceChoice[index]+'</option>';
+                    continue;
+                }
+                output += '<option value="'+serviceMoney[index]+'">'
+                    +serviceChoice[index]+'</option>';
+            }
+            output += '</td></tr>';
+            output += '<tr><td>Loại phòng thuê:</td><td><select id="typeRoom">';
+            for(let index in typeRoomArr){
+                if(typeRoomArr[index] == this.typeRoom){
+                    output += '<option value="'+typeRoomArr[index]+'" selected>'
+                        +typeRoomArr[index]+'</option>';
+                    continue;
+                }
+                output += '<option value="'+typeRoomArr[index]+'">'
+                    +typeRoomArr[index]+'</option>';
+            }
+            output += '</td></tr>';
+            output += '<tr>\n' +
+                '        <td colspan="2" style="text-align:center">' +
+                '<input type="submit" value="Edit" onclick="submitEdit()"/></td>\n' +
+                '    </tr>'
+            output += '</table>';
+        }
+        setData(name,cmnd,date,email,address,customer,coupon,quantity,rentDays,
+                service,typeRoom){
+            this.name = name;
+            this.cmnd = cmnd;
+            this.date = date;
+            this.email = email;
+            this.address = address;
+            this.customer = customer;
+            this.coupon = coupon;
+            this.quantity = quantity;
+            this.rentDays = rentDays;
+            this.service = service;
+            this.typeRoom =typeRoom;
+        }
+        showAmount(){
+            let moneyCoupon = 0;
+            if(this.address.indexOf('Đà Nẵng')>-1){
+                moneyCoupon += 20;
+            }
+            if(this.address.indexOf('Huế')>-1){
+                moneyCoupon += 10;
+            }
+            if(this.address.indexOf('Quảng Nam')>-1){
+                moneyCoupon += 5;
+            }
+            if(this.rentDays < 5){
+                moneyCoupon += 10;
+            }else if(this.rentDays < 8){
+                moneyCoupon += 20;
+            }else{
+                moneyCoupon += 30;
+            }
+            for (let index in customerMember){
+                if(customerMember[index] == this.customer){
+                    moneyCoupon += customerDiscount[index];
+                }
+            }
+            let moneyPay = this.service*this.rentDays - moneyCoupon;
+            output = '<table>';
+            output += '<tr><td>Số tiền phải trả</td><td>'+moneyPay+'</td></tr>';
+            output += '<tr><td>Số tiền giảm giá</td><td>'+moneyCoupon+'</td></tr>';
+            output += '</table>';
+
+        }
+    }
+
+    let customer = new Customer('Lee Min Hô','123456789','1999-10-12','leminho@gmail.com',
+        'no address in Huế','Platinum',10,2,4,500,'Vip');
+
+</script>
+</body>
+</html>
