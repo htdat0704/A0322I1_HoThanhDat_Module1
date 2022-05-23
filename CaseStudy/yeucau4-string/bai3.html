@@ -7,39 +7,67 @@
 <body>
 <script>
 
-    let string1 = 'aabcc3411';
-    let string2 = 'adcaa2324';
+    let string1 = 'aabcce';
+    let string2 = 'adcaaa';
 
-    function shortenStringWithDuplicateChar(string){
-        let arrayString = string.split('');
-        for(let index in arrayString){
-            for(let indexDiff in arrayString){
-                if(index == indexDiff){
-                    continue;
-                }
-                if(arrayString[index] === arrayString[indexDiff]){
-                    arrayString.splice(indexDiff, 1);
-                }
-            }
-        }
-        return arrayString.join('');
+    // function shortenStringWithDuplicateChar(string){
+    //     let arrayString = string.split('');
+    //     for(let index in arrayString){
+    //         for(let indexDiff in arrayString){
+    //             if(index == indexDiff){
+    //                 continue;
+    //             }
+    //             if(arrayString[index] === arrayString[indexDiff]){
+    //                 arrayString.splice(indexDiff, 1);
+    //             }
+    //         }
+    //     }
+    //     return arrayString.join('');
+    // }
+    //
+    // function commonCharacterCount(s1, s2){
+    //     let arrayString1 = shortenStringWithDuplicateChar(s1);
+    //     let arrayString2 = shortenStringWithDuplicateChar(s2);
+    //     count = 0;
+    //     for(let index1 in arrayString1){
+    //         for(let index2 in arrayString2){
+    //             if(arrayString1[index1] == arrayString2[index2]){
+    //                 count ++;
+    //             }
+    //         }
+    //     }
+    //     return count;
+    // }
+
+    function countDuplicateString(string,word){
+        return string.split(word).length - 1
     }
 
-    function commonCharacterCount(s1, s2){
-        let arrayString1 = shortenStringWithDuplicateChar(s1);
-        let arrayString2 = shortenStringWithDuplicateChar(s2);
-        count = 0;
-        for(let index1 in arrayString1){
-            for(let index2 in arrayString2){
-                if(arrayString1[index1] == arrayString2[index2]){
-                    count ++;
+    function countDuplicateWordString(s1,s2){
+        let count = 0;
+        let arrDuplicate = [];
+        for(let i= 0 ; i< s1.length; i++ ){
+            for(let j = 0; j < s2.length ; j++){
+                if(arrDuplicate.indexOf(s1[i]) != -1){
+                    break;
+                }
+                if(s2[j] === s1[i]){
+                    if(countDuplicateString(s1,s1[i])>1 && countDuplicateString(s2,s2[j])>1){
+                        let countDuplicate = (countDuplicateString(s1,s1[i]) > countDuplicateString(s2,s1[i]))?
+                            countDuplicateString(s2,s1[i]):countDuplicateString(s1,s1[i])
+                        arrDuplicate.push(s1[i]);
+                        count += countDuplicate;
+                    }else{
+                        arrDuplicate.push(s1[i]);
+                        count +=1;
+                    }
                 }
             }
         }
         return count;
     }
-
-    alert(commonCharacterCount(string1,string2));
+    alert(countDuplicateWordString(string1,string2));
+    //alert(commonCharacterCount(string1,string2));
 
 
 
