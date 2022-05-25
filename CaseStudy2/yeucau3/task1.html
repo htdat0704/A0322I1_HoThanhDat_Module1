@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Task1</title>
+</head>
+<body>
+<table>
+    <tr>
+        <td><label >CMND:</label></td>
+        <td><input type="text" id="cmnd" /></td>
+    </tr>
+    <tr>
+        <td><label >Ngày sinh:</label></td>
+        <td><input type="text" id="date" /></td>
+    </tr>
+    <tr>
+        <td><label >Email:</label></td>
+        <td><input type="email" id="email" /></td>
+    </tr>
+    <tr>
+        <td><label >Số lượng đi kèm:</label></td>
+        <td><input type="number"   id="quantity" /></td>
+    </tr>
+    <tr>
+        <td><label >Số ngày thuê:</label></td>
+        <td><input type="number"   id="rentDays" /><br></td>
+    </tr>
+    <tr>
+        <td colspan="2" style="text-align:center"><input type="submit" onclick="submit()"/></td>
+    </tr>
+</table>
+<table id="output">
+
+</table>
+<script>
+    const alphabet = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"];
+    let output = '';
+    function submit(){
+        if(validForm() == false){
+            return false;
+        }
+
+        let cmnd = document.getElementById('cmnd').value;
+        let date = document.getElementById('date').value;
+        let email = document.getElementById('email').value;
+        let quantity = document.getElementById('quantity').value;
+        let rentDays = parseInt(document.getElementById('rentDays').value);
+
+        output += '<tr><td>CMND</td><td>'+cmnd+'</td></tr>';
+        output += '<tr><td>Ngày sinh</td><td>'+date+'</td></tr>';
+        output += '<tr><td>Email</td><td>'+email+'</td></tr>';
+        output += '<tr><td>Số lượng đi kèm</td><td>'+quantity+'</td></tr>';
+        output += '<tr><td>Số ngày thuê</td><td>'+rentDays+'</td></tr>';
+
+
+        document.getElementById('output').innerHTML = output
+
+    }
+
+    function validForm(){
+        let cmnd = document.getElementById('cmnd').value;
+        let count = 0;
+        let date = document.getElementById('date').value;
+        let arrdate = date.split('/');
+        let mail = document.getElementById('email').value;
+        let quantity = document.getElementById('quantity').value;
+        let rentDays = document.getElementById('rentDays').value;
+        for(let i = 0; i < cmnd.length; i++){
+            if(alphabet.indexOf(cmnd[i]) > -1 || alphabet.indexOf(cmnd[i].toLowerCase()) > -1){
+                count ++;
+            }
+        }
+        if(cmnd == ''){
+            alert('Please fill cmnd');
+            return false;
+        }
+        if(count > 0){
+            alert('Plese fill CMND by number');
+            return false;
+        }
+        if(date == ''){
+            alert('Please fill date');
+            return false;
+        }
+        if((arrdate[0] < 0 || arrdate[0] > 31) || (arrdate[1] < 0 || arrdate[1] > 12)
+            || (arrdate[2] < 999 || arrdate[2] > 9999) || arrdate[0] === undefined ||
+            arrdate[1] === undefined || arrdate[2] === undefined) {
+            alert('Date must be like dd/mm/yyyy');
+            return false;
+        }
+
+        if(mail == ''){
+            alert('Please fill email');
+            return false;
+        }
+        if(mail.indexOf('@') == -1 || mail.indexOf('.') == -1){
+            alert('Plese fill email like abc@abc.abc');
+            return false;
+        }
+        if(quantity == ''){
+            alert('Please fill Số lượng đi kèm');
+            return false;
+        }
+        if(quantity.indexOf('.') > -1 || parseInt(quantity) < 0){
+            alert('Số lượng đi kèm must be integer or >0');
+            return false;
+        }
+        if(rentDays == ''){
+            alert('Please fill ngày thuê');
+            return false;
+        }
+        if(rentDays.indexOf('.') > -1 || parseInt(rentDays) < 0){
+            alert('Ngày thuê đi kèm must be integer or >0');
+            return true;
+        }
+
+        return true;
+
+    }
+
+
+</script>
+</body>
+</html>

@@ -2,11 +2,38 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Bài 1</title>
+    <title>Task2</title>
 </head>
 <body>
+<table>
+    <tr>
+        <td><label >Tên:</label></td>
+        <td><input type="text" id="name" /></td>
+    </tr>
+    <tr>
+        <td><label >Địa chỉ:</label></td>
+        <td><input type="text" id="address" /><br></td>
+    </tr>
+    <tr>
+        <td colspan="2" style="text-align:center"><input type="submit" onclick="submit()"/></td>
+    </tr>
+</table>
+<table id="output">
+
+</table>
 <script>
-    let input = '  tRuong    TuAn   HaI Ne  ';
+    let output ='';
+    function submit(){
+        let name = document.getElementById('name').value;
+        let address = document.getElementById('address').value;
+
+        output += '<tr><td>Tên</td><td>'+chuanHoaXau(name)+'</td></tr>';
+        output += '<tr><td>Địa chỉ</td><td>'+chuanHoaXau(address)+'</td></tr>';
+
+
+
+        document.getElementById('output').innerHTML = output
+    }
     function chuanHoaXau(input){
         let string = input.trim();
         let arrayString = string.split('');
@@ -49,7 +76,6 @@
         let output = arrayString.join('');
         return output
     }
-    alert(chuanHoaXau(input));
 
 </script>
 </body>
