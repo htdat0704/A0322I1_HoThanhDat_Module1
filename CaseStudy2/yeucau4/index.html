@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Array</title>
+</head>
+<body>
+<h2>Ứng dụng quản lý Customer</h2>
+Add customer: <input type="text"  id="product"/>
+<input type="submit" value="Add" onclick="addProduct()" /><br>
+<table id="output" border = '1px solid black' style="font-size:20px"></table><br>
+
+
+<script>
+
+    let arrCustomer = [];
+    let output = '';
+
+    function sortCustomer(arr){
+        let newArr = makeArrOfIndexWithOnlyLastName(arr).sort();
+        let arrSort = [];
+        let arrIndex = [];
+        for (let index in newArr){
+            let substrings = newArr[index].split("/");
+            arrIndex.push(substrings[1]);
+        }
+        for(let index in arr){
+            arrSort.push(arr[arrIndex[index]]);
+        }
+        return arrSort;
+    }
+
+    function makeArrOfIndexWithOnlyLastName(arr){
+        let newArr = [];
+        let position = -1;
+        for(let index in arr){
+            position = arr[index].lastIndexOf(" ");
+            if(position != -1){
+                let lastName = arr[index].slice(position+1,arr[index].length);
+                newArr.push(lastName+'/'+index);
+            }else{
+                newArr.push(arr[index]+'/'+index);
+            }
+        }
+        return newArr;
+    }
+
+    function addProduct() {
+        let product = document.getElementById('product').value;
+        arrCustomer.push(product);
+        output = "<tr>" +
+            "<th>STT</th>" +
+            "<th colspan='2'>Customer</th>" +
+            "</tr>";
+        let arrSort = sortCustomer(arrCustomer);
+        for ( let index in arrSort){
+            output += "<tr>" +
+                "<td>"+(parseInt(index) + 1)+"</td>" +
+                "<td>"+arrSort[index]+"</td>" +
+                "<td><input value='Delete' type='submit' onclick='deleteCustomer("+index+")'/></td>" +
+                "</tr>"
+        }
+        document.getElementById('output').innerHTML = output;
+    }
+    function deleteCustomer(index) {
+        arrCustomer.splice(index,1);
+        output = "<tr>" +
+            "<th>STT</th>" +
+            "<th colspan='2'>Customer</th>" +
+            "</tr>";
+        let arrSort = sortCustomer(arrCustomer);
+        for ( let index in arrSort){
+            output += "<tr>" +
+                "<td>"+(parseInt(index) + 1)+"</td>" +
+                "<td>"+arrSort[index]+"</td>" +
+                "<td><input value='Delete' type='submit' onclick='deleteCustomer("+index+")'/></td>" +
+                "</tr>"
+        }
+        document.getElementById('output').innerHTML = output;
+    }
+
+
+
+</script>
+</body>
+</html>
